@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */; };
-		5EF5A4D01AE9B314009938F7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4CF1AE9B314009938F7 /* FirstViewController.swift */; };
-		5EF5A4D21AE9B314009938F7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D11AE9B314009938F7 /* SecondViewController.swift */; };
 		5EF5A4D51AE9B315009938F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D31AE9B315009938F7 /* Main.storyboard */; };
 		5EF5A4D71AE9B315009938F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D61AE9B315009938F7 /* Images.xcassets */; };
 		5EF5A4DA1AE9B315009938F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */; };
 		5EF5A4E61AE9B315009938F7 /* DN_ClubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */; };
+		FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1CE1AF2F05500466690 /* ClubList.swift */; };
+		FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */; };
+		FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D21AF2F0CB00466690 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +31,15 @@
 		5EF5A4C81AE9B314009938F7 /* DN Clubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DN Clubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4CC1AE9B314009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5EF5A4CF1AE9B314009938F7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5EF5A4D11AE9B314009938F7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5EF5A4D41AE9B315009938F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EF5A4D61AE9B315009938F7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5EF5A4D91AE9B315009938F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5EF5A4DF1AE9B315009938F7 /* DN ClubsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DN ClubsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4E41AE9B315009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DN_ClubsTests.swift; sourceTree = "<group>"; };
+		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
+		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
+		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
-				5EF5A4CF1AE9B314009938F7 /* FirstViewController.swift */,
-				5EF5A4D11AE9B314009938F7 /* SecondViewController.swift */,
+				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
+				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
+				FB26F1CE1AF2F05500466690 /* ClubList.swift */,
 				5EF5A4D31AE9B315009938F7 /* Main.storyboard */,
 				5EF5A4D61AE9B315009938F7 /* Images.xcassets */,
 				5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */,
@@ -215,9 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EF5A4D21AE9B314009938F7 /* SecondViewController.swift in Sources */,
+				FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */,
+				FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */,
 				5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */,
-				5EF5A4D01AE9B314009938F7 /* FirstViewController.swift in Sources */,
+				FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				5EF5A4EB1AE9B315009938F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5EF5A4EC1AE9B315009938F7 /* Build configuration list for PBXNativeTarget "DN ClubsTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				5EF5A4EE1AE9B315009938F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
