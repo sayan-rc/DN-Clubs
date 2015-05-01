@@ -95,6 +95,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Star 1" width="414" height="393"/>
+        <image name="Star 1" width="21" height="20"/>
     </resources>
 </document>
