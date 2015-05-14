@@ -14,6 +14,7 @@ class ClubList: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //hui
     }
 
     override func didReceiveMemoryWarning() {
