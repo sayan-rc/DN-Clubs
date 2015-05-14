@@ -13,6 +13,8 @@ class FavoriteClubs: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //test
+        //test 2
+        //dfsdfdsfsfsd
         // Do any additional setup after loading the view.
     }
 
