@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ClubList: UIViewController {
+class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var textArray: NSMutableArray! = NSMutableArray()
+    
+    //NOT FINISHED
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
