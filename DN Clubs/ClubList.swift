@@ -18,7 +18,20 @@ class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.textArray.addObject("DN Nighthackers")
+        
+        self.textArray.addObject("Chungis Soup")
+        
+        self.textArray.addObject("Science Olympiad")
+        
+        self.textArray.addObject("Science Alliance")
+        
+        self.textArray.addObject("Quiz Bowl")
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
+        
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +39,24 @@ class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.textArray.count
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+        {
+            
+        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        
+        cell.textLabel?.text = self.textArray.objectAtIndex(indexPath.row) as? String
+            
+        return cell
+    }
+    
     //
 
     /*
