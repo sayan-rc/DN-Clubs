@@ -32,7 +32,7 @@ class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
     }
 
     override func didReceiveMemoryWarning() {
