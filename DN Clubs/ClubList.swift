@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController{
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         self.textArray.addObject("DN Nighthackers")
         
         self.textArray.addObject("Chungis Soup")
@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
-        
+        */
         // Do any additional setup after loading the view
     }
 
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    /*
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.textArray.count
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         return cell
     }
-    
+    */
     //
 
     /*
