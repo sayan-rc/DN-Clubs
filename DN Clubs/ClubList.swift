@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet var tableView: UITableView!
     
     var textArray: NSMutableArray! = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
         self.textArray.addObject("DN Nighthackers")
         
         self.textArray.addObject("Chungis Soup")
@@ -29,7 +30,7 @@ class ViewController: UIViewController{
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
-        */
+        
         // Do any additional setup after loading the view
     }
 
@@ -37,7 +38,7 @@ class ViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.textArray.count
@@ -54,10 +55,10 @@ class ViewController: UIViewController{
             
         return cell
     }
-    */
+    
     //
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -65,6 +66,6 @@ class ViewController: UIViewController{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
