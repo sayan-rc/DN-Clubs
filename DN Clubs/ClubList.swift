@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var textArray: NSMutableArray! = NSMutableArray()
     
