@@ -27,10 +27,10 @@ class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate{
         self.textArray.addObject("Science Alliance")
         
         self.textArray.addObject("Quiz Bowl")
-        
+        /*
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
-        
+        */
         // Do any additional setup after loading the view
     }
 
