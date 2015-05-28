@@ -8,8 +8,12 @@
 
 import UIKit
 
-class ClubList: UIViewController {
+class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var textArray: NSMutableArray! = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +25,27 @@ class ClubList: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.textArray.count
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+        {
+            
+        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        
+        cell.textLabel?.text = self.textArray.objectAtIndex(indexPath.row) as? String
+            
+        return cell
+    }
+    
     //
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -31,6 +53,6 @@ class ClubList: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
