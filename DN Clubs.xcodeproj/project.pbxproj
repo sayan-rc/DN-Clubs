@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5EF4396E1B17D6EB00FA5069 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4396D1B17D6EB00FA5069 /* TableViewCell.swift */; };
 		5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */; };
 		5EF5A4D51AE9B315009938F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D31AE9B315009938F7 /* Main.storyboard */; };
 		5EF5A4D71AE9B315009938F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D61AE9B315009938F7 /* Images.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5EF4396D1B17D6EB00FA5069 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5EF5A4C81AE9B314009938F7 /* DN Clubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DN Clubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4CC1AE9B314009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
 				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
 				FB26F1CE1AF2F05500466690 /* ClubList.swift */,
+				5EF4396D1B17D6EB00FA5069 /* TableViewCell.swift */,
 				5EF5A4D31AE9B315009938F7 /* Main.storyboard */,
 				5EF5A4D61AE9B315009938F7 /* Images.xcassets */,
 				5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF4396E1B17D6EB00FA5069 /* TableViewCell.swift in Sources */,
 				FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */,
 				FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */,
 				5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */,
