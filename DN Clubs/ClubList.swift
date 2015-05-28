@@ -1,5 +1,5 @@
 //
-//  ClubList.swift
+//  Notifications.swift
 //  DN Clubs
 //
 //  Created by Gokul Swamy on 4/30/15.
@@ -8,63 +8,50 @@
 
 import UIKit
 
-class ClubList: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet weak var tableView: UITableView!
-    
-    var textArray: NSMutableArray! = NSMutableArray()
-    
+class ClubList: UIViewController, UITableViewDataSource {
+    var list:[(clubName: String, description: String)] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.textArray.addObject("DN Nighthackers")
-        
-        self.textArray.addObject("Chungis Soup")
-        
-        self.textArray.addObject("Science Olympiad")
-        
-        self.textArray.addObject("Science Alliance")
-        
-        self.textArray.addObject("Quiz Bowl")
-        /*
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44.0
-        */
-        // Do any additional setup after loading the view
+        var endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/clubs.json")
+        var data = NSData(contentsOfURL: endpoint!)
+        if let json: NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+            if let items = json["clubs"] as? NSArray {
+                for item in items {
+                    var name: String = item["clubName"] as! String
+                    var desc: String = item["description"] as! String
+                    list+=[(clubName: name, description: desc)]
+                }
+            }
+        }
+        // Do any additional setup after loading the view.
     }
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("Club", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel?.text = list[indexPath.row].clubName
+        cell.detailTextLabel?.text = list[indexPath.row].description
+        return cell
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.textArray.count
-        
-    }
-    
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-        {
-            
-        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
-        
-        cell.textLabel?.text = self.textArray.objectAtIndex(indexPath.row) as? String
-            
-        return cell
-    }
-    
     //
-
-    
+    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
+    */
     
-
 }

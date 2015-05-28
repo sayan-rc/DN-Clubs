@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Notifications" badgeValue="12" id="97p-Yh-54n"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="noti_icon" badgeValue="12" id="97p-Yh-54n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFp-MP-um8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Clubs" image="Star 1" id="H76-fl-o1s"/>
+                    <tabBarItem key="tabBarItem" title="My Clubs" image="fav_icon" id="H76-fl-o1s"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdC-hT-9A4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,24 +60,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b9f-2P-FBG">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-Cg-LKA">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F1M-ri-eCI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <sections/>
-                                </tableView>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Club" id="hig-lc-zqR">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hig-lc-zqR" id="QU2-oB-FoB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="MPj-mz-jv0" id="uGW-mb-G7o"/>
-                                    <outlet property="delegate" destination="MPj-mz-jv0" id="Hcq-fn-bRm"/>
+                                    <outlet property="dataSource" destination="MPj-mz-jv0" id="pbL-QF-CbZ"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Clubs" image="first" id="s0C-m1-YUe"/>
+                    <tabBarItem key="tabBarItem" title="Clubs" image="list_icon" id="s0C-m1-YUe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzc-p7-edT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,7 +106,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Star 1" width="21" height="20"/>
-        <image name="first" width="30" height="30"/>
+        <image name="fav_icon" width="21" height="20"/>
+        <image name="list_icon" width="36" height="20"/>
+        <image name="noti_icon" width="20" height="20"/>
     </resources>
 </document>
