@@ -13,6 +13,8 @@
 		5EF5A4D71AE9B315009938F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D61AE9B315009938F7 /* Images.xcassets */; };
 		5EF5A4DA1AE9B315009938F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */; };
 		5EF5A4E61AE9B315009938F7 /* DN_ClubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */; };
+		C1866C801B17D88D00DEE50B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C1866C811B17D88D00DEE50B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C7F1B17D88D00DEE50B /* GooglePlus.framework */; };
 		FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1CE1AF2F05500466690 /* ClubList.swift */; };
 		FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */; };
 		FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D21AF2F0CB00466690 /* Notifications.swift */; };
@@ -39,6 +41,9 @@
 		5EF5A4DF1AE9B315009938F7 /* DN ClubsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DN ClubsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4E41AE9B315009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DN_ClubsTests.swift; sourceTree = "<group>"; };
+		C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		C1866C7F1B17D88D00DEE50B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		C1866C821B17DAB100DEE50B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
 		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
 		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -49,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1866C801B17D88D00DEE50B /* GoogleOpenSource.framework in Frameworks */,
+				C1866C811B17D88D00DEE50B /* GooglePlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +90,7 @@
 		5EF5A4CA1AE9B314009938F7 /* DN Clubs */ = {
 			isa = PBXGroup;
 			children = (
+				C1866C821B17DAB100DEE50B /* Bridging-Header.h */,
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
 				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
 				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
@@ -99,6 +107,8 @@
 		5EF5A4CB1AE9B314009938F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */,
+				C1866C7F1B17D88D00DEE50B /* GooglePlus.framework */,
 				5EF5A4CC1AE9B314009938F7 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -348,9 +358,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DN",
+					Clubs,
+				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -358,9 +375,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DN",
+					Clubs,
+				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

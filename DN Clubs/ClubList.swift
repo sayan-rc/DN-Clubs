@@ -24,6 +24,7 @@ class ClubList: UIViewController, UITableViewDataSource {
             }
         }
         // Do any additional setup after loading the view.
+        //
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
