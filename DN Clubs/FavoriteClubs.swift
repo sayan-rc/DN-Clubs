@@ -22,11 +22,13 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+      
+        //Alert Message... Club President?
         
         var signIn: GPPSignIn?
         signIn = GPPSignIn.sharedInstance()
         signIn?.shouldFetchGooglePlusUser = true
-        signIn?.clientID = "AIzaSyD7yKyE65fh1QPXa09-Y377Gudy6guB-aI"
+        signIn?.clientID = "679790092535-jkfc6c4tkm93a1vbgnqc0p2ppdbe61fo.apps.googleusercontent.com"
         signIn?.scopes = [kGTLAuthScopePlusLogin]
         signIn?.delegate = self
         signIn?.authenticate()
