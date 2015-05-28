@@ -39,9 +39,9 @@
 		5EF5A4DF1AE9B315009938F7 /* DN ClubsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DN ClubsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4E41AE9B315009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DN_ClubsTests.swift; sourceTree = "<group>"; };
-		C1866C7D1B17D7F300DEE50B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Bridging-Header.h"; sourceTree = "<group>"; };
 		C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
 		C1866C7F1B17D88D00DEE50B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		C1866C821B17DAB100DEE50B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
 		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
 		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		5EF5A4CA1AE9B314009938F7 /* DN Clubs */ = {
 			isa = PBXGroup;
 			children = (
-				C1866C7D1B17D7F300DEE50B /* Bridging-Header.h */,
+				C1866C821B17DAB100DEE50B /* Bridging-Header.h */,
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
 				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
 				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
