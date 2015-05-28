@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+//why is this error D:
 class TableViewCell: UITableViewCell {
 
 }
