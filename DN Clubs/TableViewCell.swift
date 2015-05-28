@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nighthackers. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 //why is this error D:
 class TableViewCell: UITableViewCell {
 
