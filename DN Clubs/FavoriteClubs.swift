@@ -8,17 +8,46 @@
 
 import UIKit
 
-class FavoriteClubs: UIViewController {
+//G+
+
+import AddressBook
+import MediaPlayer
+import CoreMotion
+import CoreLocation
+import AssetsLibrary
+
+
+class FavoriteClubs: UIViewController, GPPSignInDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        var signIn: GPPSignIn?
+        signIn = GPPSignIn.sharedInstance()
+        signIn?.shouldFetchGooglePlusUser = true
+        signIn?.clientID = "AIzaSyD7yKyE65fh1QPXa09-Y377Gudy6guB-aI"
+        signIn?.scopes = [kGTLAuthScopePlusLogin]
+        signIn?.delegate = self
+        signIn?.authenticate()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func finishedWithAuth(auth: GTMOAuth2Authentication?, error: NSError?){
+        println(auth)
+    }
+    
+    
+    func didDisconnectWithError(error: NSError?){
+        
+    }
+    
+
     //
 //
     /*
