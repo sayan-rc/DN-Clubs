@@ -18,30 +18,43 @@ import AssetsLibrary
 
 
 class FavoriteClubs: UIViewController, GPPSignInDelegate {
-
+    var signIn: GPPSignIn?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
         //Alert Message... Club President?
-        
-        var signIn: GPPSignIn?
-        signIn = GPPSignIn.sharedInstance()
-        signIn?.shouldFetchGooglePlusUser = true
-        signIn?.clientID = "679790092535-jkfc6c4tkm93a1vbgnqc0p2ppdbe61fo.apps.googleusercontent.com"
-        signIn?.scopes = [kGTLAuthScopePlusLogin]
-        signIn?.delegate = self
-        signIn?.authenticate()
-        
+        let alert = UIAlertView(title: "Login", message: "Are you a club president?", delegate: self, cancelButtonTitle: "No")
+        alert.title = "Login"
+        alert.message = "Are you a club president?"
+        //alert.alertViewStyle = UIAlertViewStyle.LoginAndPasswordInput
+        alert.cancelButtonIndex = 0
+        alert.addButtonWithTitle("Yes")
+        alert.show()
     }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 0:
+            println("hello")
+        default:
+            signIn = GPPSignIn.sharedInstance()
+            signIn?.shouldFetchGooglePlusUser = true
+            signIn?.clientID = "679790092535-jkfc6c4tkm93a1vbgnqc0p2ppdbe61fo.apps.googleusercontent.com"
+            signIn?.scopes = [kGTLAuthScopePlusLogin]
+            signIn?.delegate = self
+            signIn?.authenticate()
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func finishedWithAuth(auth: GTMOAuth2Authentication?, error: NSError?){
-        println(auth)
+    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
+        
     }
     
     
