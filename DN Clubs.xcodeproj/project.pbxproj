@@ -17,6 +17,8 @@
 		FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1CE1AF2F05500466690 /* ClubList.swift */; };
 		FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */; };
 		FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D21AF2F0CB00466690 /* Notifications.swift */; };
+		FB8CA7201B338C1B00B80672 /* addClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8CA71F1B338C1B00B80672 /* addClub.swift */; };
+		FB8CA7231B33CF4600B80672 /* myClubs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
 		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
 		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		FB8CA71F1B338C1B00B80672 /* addClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addClub.swift; sourceTree = "<group>"; };
+		FB8CA7221B33CF4600B80672 /* myClubs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myClubs.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +94,11 @@
 			children = (
 				C1866C821B17DAB100DEE50B /* Bridging-Header.h */,
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
+				FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */,
 				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
 				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
 				FB26F1CE1AF2F05500466690 /* ClubList.swift */,
+				FB8CA71F1B338C1B00B80672 /* addClub.swift */,
 				5EF5A4D31AE9B315009938F7 /* Main.storyboard */,
 				5EF5A4D61AE9B315009938F7 /* Images.xcassets */,
 				5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */,
@@ -228,8 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB8CA7201B338C1B00B80672 /* addClub.swift in Sources */,
 				FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */,
 				FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */,
+				FB8CA7231B33CF4600B80672 /* myClubs.xcdatamodeld in Sources */,
 				5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */,
 				FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */,
 			);
@@ -355,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -369,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -446,6 +456,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB8CA7221B33CF4600B80672 /* myClubs.xcdatamodel */,
+			);
+			currentVersion = FB8CA7221B33CF4600B80672 /* myClubs.xcdatamodel */;
+			path = myClubs.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5EF5A4C01AE9B314009938F7 /* Project object */;
 }

@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ClubList: UIViewController, UITableViewDataSource {
+class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
     var list:[(clubName: String, description: String)] = []
+    var filteredList:[(clubName: String, description: String)]!
+    var searchController: UISearchController!
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/clubs.json")
@@ -25,30 +28,62 @@ class ClubList: UIViewController, UITableViewDataSource {
         } catch {
             print("broken link")
         }
-
-        
+        tableView.dataSource = self
+        filteredList = list
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
         // Do any additional setup after loading the view.
         //
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("a")
-        return list.count
+        return filteredList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Club", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = list[indexPath.row].clubName
-        cell.detailTextLabel?.text = list[indexPath.row].description
-        //print("b")
+        cell.textLabel?.text = filteredList[indexPath.row].clubName
+        cell.detailTextLabel?.text = filteredList[indexPath.row].description
         return cell
     }
     
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchText = searchController.searchBar.text?.lowercaseString
+        if (searchText!.isEmpty){
+            filteredList = list
+        }
+        else{
+            filteredList = list.filter({ (dataString: (clubName: String, description: String)) -> Bool in
+                return dataString.clubName.lowercaseString.rangeOfString(searchText!) != nil
+            })
+        }
+        tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //if required
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showAddClub" {
+            if let destinationVC = segue.destinationViewController as? addClub{
+                let row = self.tableView.indexPathForSelectedRow?.row
+                destinationVC.text1 = filteredList[row!].clubName
+                destinationVC.text2 = filteredList[row!].description
+            }
+        }
+    }
+ 
     
     //
     /*

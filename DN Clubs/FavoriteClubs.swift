@@ -17,9 +17,12 @@ import CoreLocation
 import AssetsLibrary
 
 
-class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource {
+class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource, UITableViewDelegate {
     var signIn: GPPSignIn?
     var list:[String] = []
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,7 +40,13 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch buttonIndex {
         case 0:
-            print("hello")
+            //blank table
+            let tableView: UITableView = UITableView()
+            tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            self.view.addSubview(tableView)
         default:
             signIn = GPPSignIn.sharedInstance()
             signIn?.shouldFetchGooglePlusUser = true
@@ -72,21 +81,26 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource 
         } catch {
             print("broken link")
         }
+        let tableView: UITableView = UITableView()
+        tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.view.addSubview(tableView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(list.count)
         return list.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("pCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = list[indexPath.row]
-        print("2")
         return cell
-       
     }
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell #\(indexPath.row)!")
+    }
     
     func didDisconnectWithError(error: NSError?){
         

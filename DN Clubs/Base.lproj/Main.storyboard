@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Notifications-->
@@ -36,28 +37,6 @@
                     <view key="view" contentMode="scaleToFill" id="Y5R-UX-Jx1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="57d-Cl-n97">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pCell" id="owj-YU-yIe">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="owj-YU-yIe" id="hwD-B6-sDe">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="205-Ia-5oe" id="sqs-kY-fuY"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -65,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdC-hT-9A4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="812"/>
+            <point key="canvasLocation" x="12" y="820"/>
         </scene>
         <!--Clubs-->
         <scene sceneID="wf7-sm-bVH">
@@ -79,72 +58,124 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-Cg-LKA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-Cg-LKA">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Club" id="hig-lc-zqR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Club" id="hig-lc-zqR">
                                         <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hig-lc-zqR" id="QU2-oB-FoB">
-                                            <rect key="frame" x="0.0" y="0.0" width="553" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <segue destination="gsE-nP-Eub" kind="presentation" identifier="showAddClub" modalPresentationStyle="overCurrentContext" id="fTN-WY-zV4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="MPj-mz-jv0" id="pbL-QF-CbZ"/>
+                                    <outlet property="delegate" destination="MPj-mz-jv0" id="xVz-Vu-g7W"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hz4-Cg-LKA" secondAttribute="bottom" id="a7p-N4-3IJ"/>
+                            <constraint firstItem="hz4-Cg-LKA" firstAttribute="top" secondItem="EM6-MW-zNv" secondAttribute="bottom" id="dK0-tt-Ld5"/>
+                            <constraint firstItem="hz4-Cg-LKA" firstAttribute="leading" secondItem="A75-H0-1bP" secondAttribute="leading" id="kSW-1X-TMu"/>
+                            <constraint firstAttribute="trailing" secondItem="hz4-Cg-LKA" secondAttribute="trailing" id="ntf-GM-FhA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Clubs" image="list_icon" id="IGS-Mt-Lhe"/>
                     <navigationItem key="navigationItem" id="iZt-TR-oJC"/>
                     <connections>
-                        <segue destination="glR-dd-t71" kind="show" identifier="1" id="en3-H0-jnF"/>
+                        <outlet property="searchDisplayController" destination="Upm-sy-zi2" id="7hB-EY-CrI"/>
+                        <outlet property="tableView" destination="hz4-Cg-LKA" id="1r6-f3-DSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzc-p7-edT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Upm-sy-zi2">
+                    <connections>
+                        <outlet property="delegate" destination="MPj-mz-jv0" id="6QA-uE-b75"/>
+                        <outlet property="searchContentsController" destination="MPj-mz-jv0" id="qdd-dH-Key"/>
+                        <outlet property="searchResultsDataSource" destination="MPj-mz-jv0" id="Tpr-s6-ZPz"/>
+                        <outlet property="searchResultsDelegate" destination="MPj-mz-jv0" id="mgi-Qy-qgo"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="781" y="604"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="RLT-DJ-XYC">
+        <!--Add Club-->
+        <scene sceneID="QoT-Gj-ZVG">
             <objects>
-                <viewController id="glR-dd-t71" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addClubPanel" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gsE-nP-Eub" customClass="addClub" customModule="DN_Clubs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gib-fO-VWq"/>
-                        <viewControllerLayoutGuide type="bottom" id="vox-zu-0hv"/>
+                        <viewControllerLayoutGuide type="top" id="4sd-v1-1LF"/>
+                        <viewControllerLayoutGuide type="bottom" id="DKU-dq-fxi"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qNt-Wv-Twa">
+                    <view key="view" contentMode="scaleToFill" id="fiI-wy-cNG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hai there :D" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd0-h7-uvG">
-                                <rect key="frame" x="16" y="72" width="568" height="471"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ri-3u-WCO">
+                                <rect key="frame" x="20" y="90" width="560" height="490"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYG-c0-wZb">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="ClubName" id="EcS-fN-Lbu">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="muA-4B-Dm8">
+                                            <connections>
+                                                <action selector="goBack:" destination="gsE-nP-Eub" id="7Xy-aW-bc7"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HJn-zX-W6z">
+                                            <connections>
+                                                <action selector="add:" destination="gsE-nP-Eub" id="aws-vC-nUl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Ri-3u-WCO" firstAttribute="leading" secondItem="fiI-wy-cNG" secondAttribute="leadingMargin" id="0IH-Sd-5AI"/>
+                            <constraint firstItem="hYG-c0-wZb" firstAttribute="leading" secondItem="fiI-wy-cNG" secondAttribute="leading" id="48G-5j-9Z2"/>
+                            <constraint firstItem="3Ri-3u-WCO" firstAttribute="top" secondItem="hYG-c0-wZb" secondAttribute="bottom" constant="26" id="OJK-DN-OsE"/>
+                            <constraint firstAttribute="bottom" secondItem="3Ri-3u-WCO" secondAttribute="bottom" constant="20" symbolic="YES" id="Uox-NK-ow7"/>
+                            <constraint firstItem="3Ri-3u-WCO" firstAttribute="centerX" secondItem="hYG-c0-wZb" secondAttribute="centerX" id="b9q-6p-W3f"/>
+                            <constraint firstItem="hYG-c0-wZb" firstAttribute="top" secondItem="4sd-v1-1LF" secondAttribute="bottom" id="d8O-Qj-Hml"/>
+                            <constraint firstAttribute="trailing" secondItem="hYG-c0-wZb" secondAttribute="trailing" id="y3r-p4-CW9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barTitle" destination="EcS-fN-Lbu" id="CX6-kW-VK3"/>
+                        <outlet property="clubDescription" destination="3Ri-3u-WCO" id="UoB-6s-3a0"/>
+                        <outlet property="topBar" destination="hYG-c0-wZb" id="Zxc-qW-n9h"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QMD-30-UTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yyp-Gb-0R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112" y="624"/>
+            <point key="canvasLocation" x="1590" y="573"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabs" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
