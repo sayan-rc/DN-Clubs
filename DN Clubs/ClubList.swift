@@ -34,6 +34,7 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
+        searchController.definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
         // Do any additional setup after loading the view.
@@ -70,7 +71,7 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //if required
+        //
     }
     
     

@@ -46,7 +46,6 @@ class addClub: UIViewController {
             let entity =  NSEntityDescription.entityForName("Club", inManagedObjectContext: managedContext)
             let club = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
             club.setValue(text1, forKey: "name")
-            var error: NSError?
             do {
                 try managedContext.save()
             } catch {
@@ -54,12 +53,7 @@ class addClub: UIViewController {
             }
         }
         
-        
-        
-        
-      
-        
-        
+
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
