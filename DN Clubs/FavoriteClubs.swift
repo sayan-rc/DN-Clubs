@@ -16,17 +16,52 @@ import CoreMotion
 import CoreLocation
 import AssetsLibrary
 
+import CoreData
 
 class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource, UITableViewDelegate {
     var signIn: GPPSignIn?
-    var list:[String] = []
+    var list = [String]()
+    var tableView = UITableView()
     
-    
+    override func viewDidAppear(animated: Bool) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName:"Club")
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            let results = fetchedResults
+            for club: NSManagedObject in results!{
+                if !list.contains(club.valueForKey("name") as! String){
+                    list.append(club.valueForKey("name") as! String)
+                }
+            }
+        } catch {
+            print("whoops")
+        }
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-      
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName:"Club")
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            let results = fetchedResults
+            for club: NSManagedObject in results!{
+                    list.append(club.valueForKey("name") as! String)
+            }
+        } catch {
+            print("whoops")
+        }
+        tableView = UITableView()
+        tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.view.addSubview(tableView)
         //Alert Message... Club President?
         let alert = UIAlertView(title: "Login", message: "Are you a club president?", delegate: self, cancelButtonTitle: "No")
         alert.title = "Login"
@@ -41,12 +76,7 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
         switch buttonIndex {
         case 0:
             //blank table
-            let tableView: UITableView = UITableView()
-            tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-            self.view.addSubview(tableView)
+            print("no")
         default:
             signIn = GPPSignIn.sharedInstance()
             signIn?.shouldFetchGooglePlusUser = true
@@ -75,18 +105,13 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
                 let pName: String = item["presName"] as! String
                 let pClub: String = item["presClubs"] as! String
                 if(pName == email){
-                    list+=[pClub]
+                   list+=[pClub+" (Admin)"]
                 }
             }
         } catch {
             print("broken link")
         }
-        let tableView: UITableView = UITableView()
-        tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.view.addSubview(tableView)
+        self.tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,6 +126,49 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
     }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if(list[indexPath.row].hasSuffix("(Admin)")) {
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(editingStyle == .Delete ) {
+            // Find the club object the user is trying to delete
+            let toDelete = list[indexPath.row]
+            // Delete it from the managedObjectContext
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            let fetchRequest = NSFetchRequest(entityName:"Club")
+            do {
+                let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+                let results = fetchedResults
+                for club: NSManagedObject in results!{
+                    if (club.valueForKey("name") as! String == toDelete){
+                        managedContext.deleteObject(club)
+                        break
+                    }
+                }
+            } catch {
+                print("whoops")
+            }
+            // Refresh the table view to indicate that it's deleted
+            for i in 0..<list.count {
+                if list[i] == toDelete{
+                    list.removeAtIndex(i)
+                    break
+                }
+            }
+            self.tableView.reloadData()
+            
+            // Tell the table view to animate out that row
+            //self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
     
     func didDisconnectWithError(error: NSError?){
         
