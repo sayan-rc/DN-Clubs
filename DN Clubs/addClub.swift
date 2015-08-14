@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Parse
 
 class addClub: UIViewController {
     @IBOutlet var topBar: UINavigationBar!
@@ -51,6 +52,11 @@ class addClub: UIViewController {
             } catch {
                 print(error)
             }
+            let currentInstallation = PFInstallation.currentInstallation()
+            currentInstallation.addUniqueObject(text1.stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "channels")
+            currentInstallation.saveInBackground()
+            let subscribedChannels = PFInstallation.currentInstallation().channels
+            print(subscribedChannels)
         }
         
 

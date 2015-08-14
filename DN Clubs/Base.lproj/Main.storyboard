@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A226f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A244d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,14 +17,103 @@
                     <view key="view" contentMode="scaleToFill" id="I3M-DL-PR9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRN-7a-2WO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="Notifications" id="K8A-Z1-x7e">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="KS3-xd-YlM">
+                                            <connections>
+                                                <action selector="deleteNotifs:" destination="YTZ-jF-LwA" id="4nI-us-ZZk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PRN-7a-2WO" secondAttribute="trailing" id="4zd-7V-Ayh"/>
+                            <constraint firstItem="PRN-7a-2WO" firstAttribute="top" secondItem="lec-nV-VuP" secondAttribute="bottom" id="u5g-GG-Qv9"/>
+                            <constraint firstItem="PRN-7a-2WO" firstAttribute="leading" secondItem="I3M-DL-PR9" secondAttribute="leading" id="z30-qE-dmD"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Notifications" image="noti_icon" badgeValue="12" id="97p-Yh-54n"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="noti_icon" id="97p-Yh-54n"/>
+                    <connections>
+                        <outlet property="bar" destination="97p-Yh-54n" id="LQX-nb-9L5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFp-MP-um8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="712" y="-202"/>
+        </scene>
+        <!--Send Push-->
+        <scene sceneID="b26-a1-khz">
+            <objects>
+                <viewController id="SxV-JY-dhR" customClass="sendPush" customModule="DN_Clubs" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZMq-pi-oym"/>
+                        <viewControllerLayoutGuide type="bottom" id="CBD-aa-Rzr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N5x-lq-Hje">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HxU-QQ-Ips">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="ERROR" id="V4w-3C-myO">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Un8-eP-0Zf">
+                                            <connections>
+                                                <action selector="goBack:" destination="SxV-JY-dhR" id="sia-gl-jUC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Enter Message..." translatesAutoresizingMaskIntoConstraints="NO" id="ezq-9S-EDp">
+                                <rect key="frame" x="20" y="83" width="560" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="LUG-yg-cXx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbL-4j-UDZ">
+                                <rect key="frame" x="277" y="219" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="[Send]"/>
+                                <connections>
+                                    <action selector="send:" destination="SxV-JY-dhR" eventType="touchUpInside" id="h27-mJ-kVt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ezq-9S-EDp" firstAttribute="leading" secondItem="N5x-lq-Hje" secondAttribute="leadingMargin" id="7ig-gC-Cj4"/>
+                            <constraint firstItem="ezq-9S-EDp" firstAttribute="top" secondItem="HxU-QQ-Ips" secondAttribute="bottom" constant="19" id="DKw-W6-uij"/>
+                            <constraint firstItem="ezq-9S-EDp" firstAttribute="centerX" secondItem="HxU-QQ-Ips" secondAttribute="centerX" id="PkT-rK-bYl"/>
+                            <constraint firstItem="HxU-QQ-Ips" firstAttribute="top" secondItem="ZMq-pi-oym" secondAttribute="bottom" id="Rvk-IV-PJ7"/>
+                            <constraint firstAttribute="trailing" secondItem="HxU-QQ-Ips" secondAttribute="trailing" id="Ui5-YE-DV9"/>
+                            <constraint firstItem="dbL-4j-UDZ" firstAttribute="top" secondItem="ezq-9S-EDp" secondAttribute="bottom" constant="8" symbolic="YES" id="oxK-9q-7EE"/>
+                            <constraint firstItem="HxU-QQ-Ips" firstAttribute="leading" secondItem="N5x-lq-Hje" secondAttribute="leading" id="qfn-2I-NqZ"/>
+                            <constraint firstItem="ezq-9S-EDp" firstAttribute="centerX" secondItem="dbL-4j-UDZ" secondAttribute="centerX" id="tVY-eI-Wi8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="message" destination="ezq-9S-EDp" id="Cku-n3-tie"/>
+                        <outlet property="topBar" destination="HxU-QQ-Ips" id="E0z-np-fUF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efk-El-w3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-654" y="820"/>
         </scene>
         <!--My Clubs-->
         <scene sceneID="Khd-ic-dOq">
@@ -37,10 +126,27 @@
                     <view key="view" contentMode="scaleToFill" id="Y5R-UX-Jx1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEK-1J-OOd">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="My Clubs" id="qdE-jH-wRY"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uEK-1J-OOd" secondAttribute="trailing" id="Et7-rW-cZy"/>
+                            <constraint firstItem="uEK-1J-OOd" firstAttribute="top" secondItem="Ih4-ut-Qex" secondAttribute="bottom" id="Q3I-kT-XOA"/>
+                            <constraint firstItem="uEK-1J-OOd" firstAttribute="leading" secondItem="Y5R-UX-Jx1" secondAttribute="leading" id="ta0-Xl-fG3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Clubs" image="fav_icon" id="H76-fl-o1s"/>
+                    <connections>
+                        <segue destination="SxV-JY-dhR" kind="showDetail" identifier="showSendPush" id="kqq-4M-ysd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdC-hT-9A4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

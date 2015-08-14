@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 //G+
 
@@ -57,7 +58,7 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
             print("whoops")
         }
         tableView = UITableView()
-        tableView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height-20)
+        tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-20)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -124,8 +125,21 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
+        if(list[indexPath.row].hasSuffix("(Admin)")){
+            self.performSegueWithIdentifier("showSendPush", sender: self)
+        }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSendPush" {
+            if let destinationVC = segue.destinationViewController as? sendPush{
+                let row = self.tableView.indexPathForSelectedRow?.row
+                destinationVC.text1 = list[row!]
+            }
+        }
+    }
+
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if(list[indexPath.row].hasSuffix("(Admin)")) {
             return false
@@ -134,6 +148,9 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
             return true
         }
     }
+    
+    
+    
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if(editingStyle == .Delete ) {
@@ -162,6 +179,10 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
                     break
                 }
             }
+            
+            let currentInstallation = PFInstallation.currentInstallation()
+            currentInstallation.removeObject(toDelete.stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "channels")
+            currentInstallation.saveInBackground()
             self.tableView.reloadData()
             
             // Tell the table view to animate out that row

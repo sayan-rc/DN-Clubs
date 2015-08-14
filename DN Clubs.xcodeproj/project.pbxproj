@@ -14,6 +14,19 @@
 		5EF5A4E61AE9B315009938F7 /* DN_ClubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */; };
 		C1866C801B17D88D00DEE50B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1866C841B17DE4600DEE50B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C831B17DE4600DEE50B /* GooglePlus.framework */; };
+		FB0AEC0A1B7D1E9D007AC947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC081B7D1E9D007AC947 /* Bolts.framework */; };
+		FB0AEC0B1B7D1E9D007AC947 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC091B7D1E9D007AC947 /* Parse.framework */; };
+		FB0AEC0D1B7D1F75007AC947 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC0C1B7D1F75007AC947 /* AudioToolbox.framework */; };
+		FB0AEC0F1B7D1F7C007AC947 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC0E1B7D1F7C007AC947 /* CFNetwork.framework */; };
+		FB0AEC111B7D1F85007AC947 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC101B7D1F85007AC947 /* CoreGraphics.framework */; };
+		FB0AEC131B7D1F8E007AC947 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC121B7D1F8E007AC947 /* CoreLocation.framework */; };
+		FB0AEC151B7D1F95007AC947 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC141B7D1F95007AC947 /* QuartzCore.framework */; };
+		FB0AEC171B7D1F9B007AC947 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC161B7D1F9B007AC947 /* Security.framework */; };
+		FB0AEC191B7D1FA8007AC947 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC181B7D1FA8007AC947 /* StoreKit.framework */; };
+		FB0AEC1B1B7D1FB4007AC947 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC1A1B7D1FB4007AC947 /* SystemConfiguration.framework */; };
+		FB0AEC1D1B7D1FD0007AC947 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC1C1B7D1FD0007AC947 /* Accounts.framework */; };
+		FB0AEC1F1B7D1FD5007AC947 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC1E1B7D1FD5007AC947 /* Social.framework */; };
+		FB0AEC251B7D5BD0007AC947 /* sendPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AEC241B7D5BD0007AC947 /* sendPush.swift */; };
 		FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1CE1AF2F05500466690 /* ClubList.swift */; };
 		FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */; };
 		FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D21AF2F0CB00466690 /* Notifications.swift */; };
@@ -44,6 +57,20 @@
 		C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
 		C1866C821B17DAB100DEE50B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C1866C831B17DE4600DEE50B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		FB0AEC081B7D1E9D007AC947 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		FB0AEC091B7D1E9D007AC947 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		FB0AEC0C1B7D1F75007AC947 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FB0AEC0E1B7D1F7C007AC947 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FB0AEC101B7D1F85007AC947 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FB0AEC121B7D1F8E007AC947 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FB0AEC141B7D1F95007AC947 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FB0AEC161B7D1F9B007AC947 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FB0AEC181B7D1FA8007AC947 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FB0AEC1A1B7D1FB4007AC947 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FB0AEC1C1B7D1FD0007AC947 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		FB0AEC1E1B7D1FD5007AC947 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		FB0AEC241B7D5BD0007AC947 /* sendPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendPush.swift; sourceTree = "<group>"; };
+		FB0AEC261B7DACB9007AC947 /* DN Clubs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DN Clubs.entitlements"; sourceTree = "<group>"; };
 		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
 		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
 		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -56,7 +83,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0AEC1F1B7D1FD5007AC947 /* Social.framework in Frameworks */,
+				FB0AEC1D1B7D1FD0007AC947 /* Accounts.framework in Frameworks */,
+				FB0AEC1B1B7D1FB4007AC947 /* SystemConfiguration.framework in Frameworks */,
+				FB0AEC191B7D1FA8007AC947 /* StoreKit.framework in Frameworks */,
+				FB0AEC171B7D1F9B007AC947 /* Security.framework in Frameworks */,
+				FB0AEC151B7D1F95007AC947 /* QuartzCore.framework in Frameworks */,
+				FB0AEC131B7D1F8E007AC947 /* CoreLocation.framework in Frameworks */,
+				FB0AEC111B7D1F85007AC947 /* CoreGraphics.framework in Frameworks */,
+				FB0AEC0F1B7D1F7C007AC947 /* CFNetwork.framework in Frameworks */,
+				FB0AEC0D1B7D1F75007AC947 /* AudioToolbox.framework in Frameworks */,
+				FB0AEC0A1B7D1E9D007AC947 /* Bolts.framework in Frameworks */,
 				C1866C801B17D88D00DEE50B /* GoogleOpenSource.framework in Frameworks */,
+				FB0AEC0B1B7D1E9D007AC947 /* Parse.framework in Frameworks */,
 				C1866C841B17DE4600DEE50B /* GooglePlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +113,16 @@
 		5EF5A4BF1AE9B314009938F7 = {
 			isa = PBXGroup;
 			children = (
+				FB0AEC1E1B7D1FD5007AC947 /* Social.framework */,
+				FB0AEC1C1B7D1FD0007AC947 /* Accounts.framework */,
+				FB0AEC1A1B7D1FB4007AC947 /* SystemConfiguration.framework */,
+				FB0AEC181B7D1FA8007AC947 /* StoreKit.framework */,
+				FB0AEC161B7D1F9B007AC947 /* Security.framework */,
+				FB0AEC141B7D1F95007AC947 /* QuartzCore.framework */,
+				FB0AEC121B7D1F8E007AC947 /* CoreLocation.framework */,
+				FB0AEC101B7D1F85007AC947 /* CoreGraphics.framework */,
+				FB0AEC0E1B7D1F7C007AC947 /* CFNetwork.framework */,
+				FB0AEC0C1B7D1F75007AC947 /* AudioToolbox.framework */,
 				5EF5A4CA1AE9B314009938F7 /* DN Clubs */,
 				5EF5A4E21AE9B315009938F7 /* DN ClubsTests */,
 				5EF5A4C91AE9B314009938F7 /* Products */,
@@ -92,6 +141,7 @@
 		5EF5A4CA1AE9B314009938F7 /* DN Clubs */ = {
 			isa = PBXGroup;
 			children = (
+				FB0AEC261B7DACB9007AC947 /* DN Clubs.entitlements */,
 				C1866C821B17DAB100DEE50B /* Bridging-Header.h */,
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
 				FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */,
@@ -100,6 +150,7 @@
 				FB26F1CE1AF2F05500466690 /* ClubList.swift */,
 				FB8CA71F1B338C1B00B80672 /* addClub.swift */,
 				5EF5A4D31AE9B315009938F7 /* Main.storyboard */,
+				FB0AEC241B7D5BD0007AC947 /* sendPush.swift */,
 				5EF5A4D61AE9B315009938F7 /* Images.xcassets */,
 				5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */,
 				5EF5A4CB1AE9B314009938F7 /* Supporting Files */,
@@ -110,6 +161,8 @@
 		5EF5A4CB1AE9B314009938F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB0AEC081B7D1E9D007AC947 /* Bolts.framework */,
+				FB0AEC091B7D1E9D007AC947 /* Parse.framework */,
 				C1866C831B17DE4600DEE50B /* GooglePlus.framework */,
 				C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */,
 				5EF5A4CC1AE9B314009938F7 /* Info.plist */,
@@ -183,6 +236,18 @@
 				TargetAttributes = {
 					5EF5A4C71AE9B314009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZVC58YN32D;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					5EF5A4DE1AE9B315009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -234,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0AEC251B7D5BD0007AC947 /* sendPush.swift in Sources */,
 				FB8CA7201B338C1B00B80672 /* addClub.swift in Sources */,
 				FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */,
 				FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */,
@@ -298,6 +364,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = ClubHubPush;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -341,6 +408,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = ClubHubPush;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -363,13 +431,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)/DN",
+					Clubs,
+				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DN Clubs/Bridging-Header.h";
 			};
 			name = Debug;
@@ -378,13 +457,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
+					"$(PROJECT_DIR)/DN",
+					Clubs,
+				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DN Clubs/Bridging-Header.h";
 			};
 			name = Release;
