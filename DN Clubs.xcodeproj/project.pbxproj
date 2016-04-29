@@ -14,6 +14,10 @@
 		5EF5A4E61AE9B315009938F7 /* DN_ClubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4E51AE9B315009938F7 /* DN_ClubsTests.swift */; };
 		C1866C801B17D88D00DEE50B /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C1866C841B17DE4600DEE50B /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1866C831B17DE4600DEE50B /* GooglePlus.framework */; };
+		FB08A5E51CCD3D22002ED5A5 /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08A5E41CCD3D22002ED5A5 /* TileCollectionViewCell.swift */; };
+		FB08A5E71CCD40B4002ED5A5 /* ClubGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08A5E61CCD40B4002ED5A5 /* ClubGrid.swift */; };
+		FB08A5EB1CCD6F25002ED5A5 /* blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08A5EA1CCD6F25002ED5A5 /* blur.swift */; };
+		FB08A5ED1CCD943E002ED5A5 /* clubMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08A5EC1CCD943E002ED5A5 /* clubMessages.swift */; };
 		FB0AEC0A1B7D1E9D007AC947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC081B7D1E9D007AC947 /* Bolts.framework */; };
 		FB0AEC0B1B7D1E9D007AC947 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC091B7D1E9D007AC947 /* Parse.framework */; };
 		FB0AEC0D1B7D1F75007AC947 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC0C1B7D1F75007AC947 /* AudioToolbox.framework */; };
@@ -28,8 +32,8 @@
 		FB0AEC1F1B7D1FD5007AC947 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0AEC1E1B7D1FD5007AC947 /* Social.framework */; };
 		FB0AEC251B7D5BD0007AC947 /* sendPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0AEC241B7D5BD0007AC947 /* sendPush.swift */; };
 		FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1CE1AF2F05500466690 /* ClubList.swift */; };
-		FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */; };
 		FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB26F1D21AF2F0CB00466690 /* Notifications.swift */; };
+		FB5646571B9D48C5008B3DF6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5646561B9D48C5008B3DF6 /* CloudKit.framework */; };
 		FB8CA7201B338C1B00B80672 /* addClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8CA71F1B338C1B00B80672 /* addClub.swift */; };
 		FB8CA7231B33CF4600B80672 /* myClubs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,10 @@
 		C1866C7E1B17D88D00DEE50B /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
 		C1866C821B17DAB100DEE50B /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C1866C831B17DE4600DEE50B /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		FB08A5E41CCD3D22002ED5A5 /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB08A5E61CCD40B4002ED5A5 /* ClubGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubGrid.swift; sourceTree = "<group>"; };
+		FB08A5EA1CCD6F25002ED5A5 /* blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blur.swift; sourceTree = "<group>"; };
+		FB08A5EC1CCD943E002ED5A5 /* clubMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = clubMessages.swift; sourceTree = "<group>"; };
 		FB0AEC081B7D1E9D007AC947 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		FB0AEC091B7D1E9D007AC947 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		FB0AEC0C1B7D1F75007AC947 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -72,8 +80,8 @@
 		FB0AEC241B7D5BD0007AC947 /* sendPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendPush.swift; sourceTree = "<group>"; };
 		FB0AEC261B7DACB9007AC947 /* DN Clubs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DN Clubs.entitlements"; sourceTree = "<group>"; };
 		FB26F1CE1AF2F05500466690 /* ClubList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubList.swift; sourceTree = "<group>"; };
-		FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteClubs.swift; sourceTree = "<group>"; };
 		FB26F1D21AF2F0CB00466690 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		FB5646561B9D48C5008B3DF6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FB8CA71F1B338C1B00B80672 /* addClub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addClub.swift; sourceTree = "<group>"; };
 		FB8CA7221B33CF4600B80672 /* myClubs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myClubs.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB5646571B9D48C5008B3DF6 /* CloudKit.framework in Frameworks */,
 				FB0AEC1F1B7D1FD5007AC947 /* Social.framework in Frameworks */,
 				FB0AEC1D1B7D1FD0007AC947 /* Accounts.framework in Frameworks */,
 				FB0AEC1B1B7D1FB4007AC947 /* SystemConfiguration.framework in Frameworks */,
@@ -113,6 +122,7 @@
 		5EF5A4BF1AE9B314009938F7 = {
 			isa = PBXGroup;
 			children = (
+				FB5646561B9D48C5008B3DF6 /* CloudKit.framework */,
 				FB0AEC1E1B7D1FD5007AC947 /* Social.framework */,
 				FB0AEC1C1B7D1FD0007AC947 /* Accounts.framework */,
 				FB0AEC1A1B7D1FB4007AC947 /* SystemConfiguration.framework */,
@@ -145,11 +155,14 @@
 				C1866C821B17DAB100DEE50B /* Bridging-Header.h */,
 				5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */,
 				FB8CA7211B33CF4600B80672 /* myClubs.xcdatamodeld */,
-				FB26F1D01AF2F08800466690 /* FavoriteClubs.swift */,
+				FB08A5E61CCD40B4002ED5A5 /* ClubGrid.swift */,
 				FB26F1D21AF2F0CB00466690 /* Notifications.swift */,
 				FB26F1CE1AF2F05500466690 /* ClubList.swift */,
+				FB08A5EA1CCD6F25002ED5A5 /* blur.swift */,
 				FB8CA71F1B338C1B00B80672 /* addClub.swift */,
 				5EF5A4D31AE9B315009938F7 /* Main.storyboard */,
+				FB08A5EC1CCD943E002ED5A5 /* clubMessages.swift */,
+				FB08A5E41CCD3D22002ED5A5 /* TileCollectionViewCell.swift */,
 				FB0AEC241B7D5BD0007AC947 /* sendPush.swift */,
 				5EF5A4D61AE9B315009938F7 /* Images.xcassets */,
 				5EF5A4D81AE9B315009938F7 /* LaunchScreen.xib */,
@@ -236,21 +249,21 @@
 				TargetAttributes = {
 					5EF5A4C71AE9B314009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = ZVC58YN32D;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					5EF5A4DE1AE9B315009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZVC58YN32D;
 						TestTargetID = 5EF5A4C71AE9B314009938F7;
 					};
 				};
@@ -302,9 +315,12 @@
 				FB0AEC251B7D5BD0007AC947 /* sendPush.swift in Sources */,
 				FB8CA7201B338C1B00B80672 /* addClub.swift in Sources */,
 				FB26F1D31AF2F0CB00466690 /* Notifications.swift in Sources */,
-				FB26F1D11AF2F08800466690 /* FavoriteClubs.swift in Sources */,
+				FB08A5ED1CCD943E002ED5A5 /* clubMessages.swift in Sources */,
+				FB08A5E71CCD40B4002ED5A5 /* ClubGrid.swift in Sources */,
+				FB08A5E51CCD3D22002ED5A5 /* TileCollectionViewCell.swift in Sources */,
 				FB8CA7231B33CF4600B80672 /* myClubs.xcdatamodeld in Sources */,
 				5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */,
+				FB08A5EB1CCD6F25002ED5A5 /* blur.swift in Sources */,
 				FB26F1CF1AF2F05500466690 /* ClubList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,8 +380,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = ClubHubPush;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -383,9 +399,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -408,8 +425,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = ClubHubPush;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kumar Swamy";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Kumar Swamy";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -420,8 +437,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "52b9ae32-2f70-41d9-bbb3-99e90208ecce";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -431,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DN Clubs/DN Clubs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -440,6 +459,7 @@
 					Clubs,
 				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -457,7 +477,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "DN Clubs/DN Clubs.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Kumar Swamy";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -466,6 +488,7 @@
 					Clubs,
 				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -483,6 +506,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -495,6 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DN Clubs.app/DN Clubs";
 			};
 			name = Debug;
@@ -503,6 +529,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -511,6 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DN Clubs.app/DN Clubs";
 			};
 			name = Release;

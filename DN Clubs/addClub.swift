@@ -20,6 +20,11 @@ class addClub: UIViewController {
         super.viewWillAppear(animated)
         barTitle.title = text1
         clubDescription.text = text2
+        self.topBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.topBar.shadowImage = UIImage()
+        self.topBar.translucent = true
+        self.topBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+
     }
 
     @IBAction func goBack(sender: AnyObject) {
@@ -56,7 +61,6 @@ class addClub: UIViewController {
             currentInstallation.addUniqueObject(text1.stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "channels")
             currentInstallation.saveInBackground()
             let subscribedChannels = PFInstallation.currentInstallation().channels
-            print(subscribedChannels)
         }
         
 

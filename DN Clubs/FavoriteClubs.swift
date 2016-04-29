@@ -62,6 +62,7 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = UIView(frame: CGRectZero)
         self.view.addSubview(tableView)
         //Alert Message... Club President?
         let alert = UIAlertView(title: "Login", message: "Are you a club president?", delegate: self, cancelButtonTitle: "No")
@@ -71,13 +72,14 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
         alert.cancelButtonIndex = 0
         alert.addButtonWithTitle("Yes")
         alert.show()
+
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         switch buttonIndex {
         case 0:
             //blank table
-            print("no")
+            print("")
         default:
             signIn = GPPSignIn.sharedInstance()
             signIn?.shouldFetchGooglePlusUser = true
@@ -124,6 +126,8 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
         cell.textLabel?.text = list[indexPath.row]
         return cell
     }
+    
+    // TO ADD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(list[indexPath.row].hasSuffix("(Admin)")){
             self.performSegueWithIdentifier("showSendPush", sender: self)
@@ -140,6 +144,14 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
     }
 
     
+
+    
+    
+    
+    
+    
+    
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if(list[indexPath.row].hasSuffix("(Admin)")) {
             return false
@@ -148,8 +160,6 @@ class FavoriteClubs: UIViewController, GPPSignInDelegate, UITableViewDataSource,
             return true
         }
     }
-    
-    
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

@@ -28,6 +28,7 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         } catch {
             print("broken link")
         }
+        list.sortInPlace {$0.0 == $1.0 ? $0.1 < $1.1 : $0.0 < $1.0}
         tableView.dataSource = self
         filteredList = list
         searchController = UISearchController(searchResultsController: nil)
@@ -37,6 +38,8 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         searchController.definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
         // Do any additional setup after loading the view.
         //
     }
@@ -79,6 +82,16 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         if segue.identifier == "showAddClub" {
             if let destinationVC = segue.destinationViewController as? addClub{
                 let row = self.tableView.indexPathForSelectedRow?.row
+                var imageOfUnderlyingView = self.view.convertViewToImage()
+                let backView = UIImageView(frame: self.view.frame)
+                backView.image = imageOfUnderlyingView
+                backView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+                var lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+                var blurView = UIVisualEffectView(effect: lightBlur)
+                blurView.frame =  backView.bounds
+                backView.addSubview(blurView)
+                destinationVC.view.addSubview(backView)
+                destinationVC.view.sendSubviewToBack(backView)
                 destinationVC.text1 = filteredList[row!].clubName
                 destinationVC.text2 = filteredList[row!].description
             }

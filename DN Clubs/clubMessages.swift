@@ -11,11 +11,43 @@ import CoreData
 import Parse
 import CloudKit
 
-class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class clubMessages: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var messages = [(String, String)]()
     var tableView = UITableView()
+    var text1 = ""
+    @IBOutlet var barText: UINavigationItem!
     @IBOutlet var bar: UITabBarItem!
+    
+    @IBAction func closeOut(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    
+    @IBAction func deleteData(sender: AnyObject) {
+        let toDelete = text1
+        // Delete it from the managedObjectContext
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName:"Club")
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            let results = fetchedResults
+            for club: NSManagedObject in results!{
+                if (club.valueForKey("name") as! String == toDelete){
+                    managedContext.deleteObject(club)
+                    break
+                }
+            }
+        } catch {
+            print("whoops")
+        }
+        
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.removeObject(toDelete.stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "channels")
+        currentInstallation.saveInBackground()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func contains(a:[(String, String)], v:(String,String)) -> Bool {
         let (c1, c2) = v
@@ -37,7 +69,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         publicData.performQuery(query, inZoneWithID: nil) { results, error in
             if error == nil { // There is no error
-                var channels = PFInstallation.currentInstallation().channels
+                let channels = PFInstallation.currentInstallation().channels
                 if(channels != nil){
                     print(channels)
                     for notif in results! {
@@ -48,8 +80,8 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
                                 dateFormatter.dateStyle = .MediumStyle
                                 let date = dateFormatter.stringFromDate(notif.creationDate!)
                                 let text = (notif["Message"] as! String).componentsSeparatedByString(": ")
-                                let temp = (text[0]+": "+date, text[1])
-                                if(!self.contains(self.messages, v: temp) && self.messages.count<20){
+                                let temp = (date, text[1])
+                                if(!self.contains(self.messages, v: temp) && self.messages.count<20 && text[0] == self.text1){
                                     self.messages.append(temp)
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         self.tableView.reloadData()
@@ -76,6 +108,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         super.viewDidLoad()
         //messages+=[("Hello", "World")]
+        barText.title = text1
         let currentInstallation = PFInstallation.currentInstallation()
         if currentInstallation.badge != 0 {
             currentInstallation.badge = 0
@@ -87,6 +120,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.backgroundColor = UIColor.clearColor()
         self.view.addSubview(tableView)
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
@@ -94,7 +128,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         publicData.performQuery(query, inZoneWithID: nil) { results, error in
             if error == nil { // There is no error
-                var channels = PFInstallation.currentInstallation().channels
+                let channels = PFInstallation.currentInstallation().channels
                 if(channels != nil){
                     for notif in results! {
                         let name = notif["Club"] as! String
@@ -104,8 +138,8 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
                                 dateFormatter.dateStyle = .MediumStyle
                                 let date = dateFormatter.stringFromDate(notif.creationDate!)
                                 let text = (notif["Message"] as! String).componentsSeparatedByString(": ")
-                                let temp = (text[0]+": "+date, text[1])
-                                if(!self.contains(self.messages, v: temp) && self.messages.count<20){
+                                let temp = (date, text[1])
+                                if(!self.contains(self.messages, v: temp) && self.messages.count<20 && text[0] == self.text1){
                                     self.messages.append(temp)
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         self.tableView.reloadData()

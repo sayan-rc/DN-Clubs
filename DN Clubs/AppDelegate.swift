@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 import Parse
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
             //iOS 7
         }
+        
         return true
     }
     
@@ -70,35 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        if let aps = userInfo["aps"] as? NSDictionary {
-            if let alert = aps["alert"] as? NSString {
-                var split = alert.componentsSeparatedByString(": ")
-                var name = split[0]
-                var message = alert.substringFromIndex(name.characters.count+2)
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                let managedContext = appDelegate.managedObjectContext
-                let fetchRequest = NSFetchRequest(entityName:"Notif")
-                do{
-                    let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
-                    let results = fetchedResults
-                    let entity =  NSEntityDescription.entityForName("Notif", inManagedObjectContext: managedContext)
-                    let notif = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-                    notif.setValue(name, forKey: "club")
-                    notif.setValue(message, forKey: "text")
-                    do {
-                        try managedContext.save()
-                        print("saved")
-                    } catch {
-                        print(error)
-                    }
-
-                } catch {
-                    print("whoo;s")
-                }
-            }
-        }
-    }
     
     
     
