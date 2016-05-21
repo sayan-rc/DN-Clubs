@@ -46,7 +46,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
     }
     
     
-
+    //Handles Setup for Google Accounts Login
     @IBAction func login(sender: AnyObject) {
         signIn = GPPSignIn.sharedInstance()
         signIn?.shouldFetchGooglePlusUser = true
@@ -60,19 +60,21 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
 
     
     
-    
+    //Once the account is authorized, this function gives Administrative privileges to Club Presidents according to the
+    //JSON file on DropBox that holds all the club data
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
         let email: String = auth.userEmail
         let endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/pClubs.json")
         let data = NSData(contentsOfURL: endpoint!)
         do{
-            let json: NSDictionary = try (NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary)!
+            let json: NSDictionary = try (NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary)! //Parses the JSON File into a dictionary for easy access to Club Names and Presidents
             let items = json["clubs"] as! NSArray
             for item in items {
                 let pName: String = item["presName"] as! String
                 let pClub: String = item["presClubs"] as! String
-                if(pName == email){
-                    list+=[pClub+" (Admin)"]
+                if(pName == email){//If the Email of the User matches the Email of a Club president, the User is a president
+                    list+=[pClub+" (Admin)"] //Changes the User's list of clubs names if the user is an adminsitrator/president
+                    //Ex: "ClubName" -> "ClubName (Admin)"
                 }
             }
         } catch {
@@ -83,7 +85,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
 
     }
 
-
+    //Builds the list of clubs
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -93,7 +95,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
             let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             var results = fetchedResults!.sort({ $0.valueForKey("name")!.compare($1.valueForKey("name") as! String!) == NSComparisonResult.OrderedAscending })
             for club: NSManagedObject in results{
-                list.append(club.valueForKey("name") as! String)
+                list.append(club.valueForKey("name") as! String)//Adds names of clubs to the list of this user's clubs
             }
         } catch {
             print("whoops")
@@ -111,6 +113,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
         return list.count
     }
     
+    //This Function handles the CollectionView which is used to display the clubs in a grid
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TileCollectionViewCell", forIndexPath: indexPath) as! TileCollectionViewCell
         cell.text.text = list[indexPath.row]
@@ -125,18 +128,20 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
             UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0), //green color
         ]
         var rc = colorsArray[indexPath.row%7]
-        cell.color.backgroundColor = rc
+        cell.color.backgroundColor = rc //Change the Color to color RC
         cell.letter.textColor = rc
-        return cell
+        return cell //Return the successfully built cell
     }
     
-    
+    //Sets size of the cell to be half the screen width
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(collectionView.bounds.size.width/2, collectionView.bounds.size.width/2)
     }
     
+    //When the user clicks on a club, this determines if the user is shown
+    //the option to send push notifications or to see club messages
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if(list[indexPath.row].hasSuffix("(Admin)")){
             self.performSegueWithIdentifier("showSendPush", sender: self)
@@ -146,8 +151,9 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
         }
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSendPush" {
+        if segue.identifier == "showSendPush" { //If the button to send push is pressed, initialize the blur background and segue
             if let destinationVC = segue.destinationViewController as? sendPush{
                 let row = collectionView.indexPathsForSelectedItems()![0].row
                 destinationVC.text1 = list[row]
@@ -164,7 +170,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
 
             }
         }
-        else{
+        else{//If the user isn't an admin, we prepare the list of club messages with a blur background and then segue 
             if let destinationVC = segue.destinationViewController as? clubMessages{
                 let row = collectionView.indexPathsForSelectedItems()![0].row
                 destinationVC.text1 = list[row]

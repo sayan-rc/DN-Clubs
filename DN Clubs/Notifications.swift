@@ -17,12 +17,14 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
     var tableView = UITableView()
     @IBOutlet var bar: UITabBarItem!
     
+    //If at least one tuple of strings v matches another tuple in list a, return true
     func contains(a:[(String, String)], v:(String,String)) -> Bool {
         let (c1, c2) = v
         for (v1, v2) in a { if v1 == c1 && v2 == c2 { return true } }
         return false
     }
     
+    //Loads table view with messages that were sent to the clubs 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         let currentInstallation = PFInstallation.currentInstallation()
@@ -72,6 +74,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
 
     }
 
+    //Repeated code?
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -141,6 +144,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         return messages.count
     }
     
+    //Load table cell with message
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "cell"
