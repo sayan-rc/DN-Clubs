@@ -1,0 +1,6 @@
+framework module Pods_DN_Clubs {
+  umbrella header "Pods-DN Clubs-umbrella.h"
+
+  export *
+  module * { export * }
+}
