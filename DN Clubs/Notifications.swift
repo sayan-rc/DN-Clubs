@@ -23,37 +23,35 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         return false
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let currentInstallation = PFInstallation.currentInstallation()
+        let currentInstallation = PFInstallation.current()
         if  currentInstallation.badge != 0 {
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
         
-        let container = CKContainer.defaultContainer()
+        let container = CKContainer.default()
         let publicData = container.publicCloudDatabase
         let query = CKQuery(recordType: "Notification", predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        publicData.performQuery(query, inZoneWithID: nil) { results, error in
+        publicData.perform(query, inZoneWith: nil) { results, error in
             if error == nil { // There is no error
-                var channels = PFInstallation.currentInstallation().channels
+                var channels = PFInstallation.current().channels
                 if(channels != nil){
                     print(channels)
                     for notif in results! {
                         let name = notif["Club"] as! String
                         for channel in channels!{
                             if (channel as! String == name){
-                                let dateFormatter = NSDateFormatter()
-                                dateFormatter.dateStyle = .MediumStyle
-                                let date = dateFormatter.stringFromDate(notif.creationDate!)
-                                let text = (notif["Message"] as! String).componentsSeparatedByString(": ")
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateStyle = DateFormatter.Style.medium
+                                let date = dateFormatter.string(from: notif.creationDate!)
+                                let text = (notif["Message"] as! String).components(separatedBy: ": ")
                                 let temp = (text[0]+": "+date, text[1])
-                                if(!self.contains(self.messages, v: temp) && self.messages.count<20){
+                                if(!self.contains(a: self.messages, v: temp) && self.messages.count<20){
                                     self.messages.append(temp)
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        self.tableView.reloadData()
-                                    })
+                                    self.tableView.reloadData()
                                     
                                 }
                                 break
@@ -76,40 +74,38 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         super.viewDidLoad()
         //messages+=[("Hello", "World")]
-        let currentInstallation = PFInstallation.currentInstallation()
+        let currentInstallation = PFInstallation.current()
         if currentInstallation.badge != 0 {
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
         tableView = UITableView()
-        tableView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-114)
+        tableView.frame = CGRect(origin: CGPoint(x: 0,y :64), size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height-114))
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.view.addSubview(tableView)
-        let container = CKContainer.defaultContainer()
+        let container = CKContainer.default()
         let publicData = container.publicCloudDatabase
         let query = CKQuery(recordType: "Notification", predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        publicData.performQuery(query, inZoneWithID: nil) { results, error in
+        publicData.perform(query, inZoneWith: nil) { results, error in
             if error == nil { // There is no error
-                var channels = PFInstallation.currentInstallation().channels
+                var channels = PFInstallation.current().channels
                 if(channels != nil){
                     for notif in results! {
                         let name = notif["Club"] as! String
                         for channel in channels!{
                             if (channel as! String == name){
-                                let dateFormatter = NSDateFormatter()
-                                dateFormatter.dateStyle = .MediumStyle
-                                let date = dateFormatter.stringFromDate(notif.creationDate!)
-                                let text = (notif["Message"] as! String).componentsSeparatedByString(": ")
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateStyle = DateFormatter.Style.medium
+                                let date = dateFormatter.string(from: notif.creationDate!)
+                                let text = (notif["Message"] as! String).components(separatedBy: ": ")
                                 let temp = (text[0]+": "+date, text[1])
-                                if(!self.contains(self.messages, v: temp) && self.messages.count<20){
+                                if(!self.contains(a: self.messages, v: temp) && self.messages.count<20){
                                     self.messages.append(temp)
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        self.tableView.reloadData()
-                                    })
+                                    self.tableView.reloadData()
                                 }
                                 break
                             }
@@ -127,7 +123,7 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
                 // Do any additional setup after loading the view.
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat
     {
         return 80.0;//Choose your custom row height
     }
@@ -137,19 +133,19 @@ class Notifications: UIViewController, UITableViewDataSource, UITableViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "cell"
-        var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell!
-        cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellIdentifier)
+        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? UITableViewCell!
+        cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         cell!.textLabel?.text = messages[indexPath.row].0
-        cell!.textLabel?.font = UIFont.boldSystemFontOfSize(18.0)
+        cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
         cell!.detailTextLabel?.text = messages[indexPath.row].1
-        cell!.detailTextLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell!.detailTextLabel?.font = UIFont.systemFont(ofSize: 15.0)
         return cell!
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

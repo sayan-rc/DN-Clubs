@@ -16,32 +16,27 @@ class addClub: UIViewController {
     @IBOutlet var barTitle: UINavigationItem!
     var text1 = "Club Name"
     var text2 = "Hello"
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         barTitle.title = text1
         clubDescription.text = text2
-        self.topBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.topBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.topBar.shadowImage = UIImage()
-        self.topBar.translucent = true
-        self.topBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+        self.topBar.isTranslucent = true
+        self.topBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
 
     }
 
-    @IBAction func goBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func add(sender: AnyObject) {
-        //print("Add Club!")
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    @IBAction func addClubForUser(_ sender: AnyObject) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName:"Club")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Club")
         var alreadyAdded = false
         do {
-            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            let fetchedResults = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
             let results = fetchedResults
             for club: NSManagedObject in results!{
-                if club.valueForKey("name") as? String == text1{
+                if club.value(forKey: "name") as? String == text1{
                     alreadyAdded = true
                 }
             }
@@ -49,23 +44,28 @@ class addClub: UIViewController {
             print("whoops")
         }
         if !alreadyAdded{
-            let entity =  NSEntityDescription.entityForName("Club", inManagedObjectContext: managedContext)
-            let club = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+            let entity =  NSEntityDescription.entity(forEntityName: "Club", in: managedContext)
+            let club = NSManagedObject(entity: entity!, insertInto:managedContext)
             club.setValue(text1, forKey: "name")
             do {
                 try managedContext.save()
             } catch {
                 print(error)
             }
-            let currentInstallation = PFInstallation.currentInstallation()
-            currentInstallation.addUniqueObject(text1.stringByReplacingOccurrencesOfString(" ", withString: ""), forKey: "channels")
+            let currentInstallation = PFInstallation.current()
+            currentInstallation.addUniqueObject(text1.replacingOccurrences(of: " ", with: ""), forKey: "channels")
             currentInstallation.saveInBackground()
-            let subscribedChannels = PFInstallation.currentInstallation().channels
+            let subscribedChannels = PFInstallation.current().channels
         }
         
-
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func hideAddClub(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

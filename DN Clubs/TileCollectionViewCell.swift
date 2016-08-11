@@ -19,15 +19,15 @@ class TileCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         back.layer.cornerRadius = 5
-        back.layer.shadowColor = UIColor.blackColor().CGColor
+        back.layer.shadowColor = UIColor.black.cgColor
         back.layer.shadowOpacity = 0.5
-        back.layer.shadowOffset = CGSizeZero
+        back.layer.shadowOffset = CGSize.zero
         back.layer.shadowRadius = 1
         
         let rectShape = CAShapeLayer()
         rectShape.bounds = color.frame
         rectShape.position = color.center
-        rectShape.path = UIBezierPath(roundedRect: color.bounds, byRoundingCorners: [.TopRight, .TopLeft], cornerRadii: CGSize(width: 5, height: 5)).CGPath
+        rectShape.path = UIBezierPath(roundedRect: color.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         color.layer.mask = rectShape
         
         circle.layoutIfNeeded()

@@ -249,6 +249,9 @@
 				TargetAttributes = {
 					5EF5A4C71AE9B314009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ZVC58YN32D;
+						DevelopmentTeamName = "Gokul Swamy";
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -264,6 +267,7 @@
 					5EF5A4DE1AE9B315009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = ZVC58YN32D;
+						LastSwiftMigration = 0800;
 						TestTargetID = 5EF5A4C71AE9B314009938F7;
 					};
 				};
@@ -470,6 +474,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DN Clubs/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -499,6 +504,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DN Clubs/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -521,6 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DN Clubs.app/DN Clubs";
 			};
 			name = Debug;
@@ -540,6 +547,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.nighthackers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DN Clubs.app/DN Clubs";
 			};
 			name = Release;

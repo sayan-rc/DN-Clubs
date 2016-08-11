@@ -16,9 +16,9 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         let endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/clubs.json")
-        let data = NSData(contentsOfURL: endpoint!)
+        let data = NSData(contentsOf: endpoint! as URL)
         do{
-            let json: NSDictionary = try (NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary)!
+            let json: NSDictionary = try (JSONSerialization.jsonObject(with: data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary)!
             let items = json["clubs"] as! NSArray
             for item in items {
                 let name: String = item["clubName"] as! String
@@ -28,7 +28,9 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         } catch {
             print("broken link")
         }
-        list.sortInPlace {$0.0 == $1.0 ? $0.1 < $1.1 : $0.0 < $1.0}
+        list.sort { (a: (clubName1: String, description1: String), b: (clubName2: String, description2: String)) -> Bool in
+            a.clubName1 == b.clubName2 ? a.description1 < b.description2 : a.clubName1 < b.clubName2
+        }
         tableView.dataSource = self
         filteredList = list
         searchController = UISearchController(searchResultsController: nil)
@@ -38,31 +40,31 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         searchController.definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
-        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // Do any additional setup after loading the view.
         //
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Club", forIndexPath: indexPath) as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Club", for: indexPath as IndexPath) as UITableViewCell
         cell.textLabel?.text = filteredList[indexPath.row].clubName
         cell.detailTextLabel?.text = filteredList[indexPath.row].description
         return cell
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        let searchText = searchController.searchBar.text?.lowercaseString
+    func updateSearchResults(for: UISearchController) {
+        let searchText = searchController.searchBar.text?.lowercased()
         if (searchText!.isEmpty){
             filteredList = list
         }
         else{
             filteredList = list.filter({ (dataString: (clubName: String, description: String)) -> Bool in
-                return dataString.clubName.lowercaseString.rangeOfString(searchText!) != nil
+                return dataString.clubName.lowercased().range(of: searchText!) != nil
             })
         }
         tableView.reloadData()
@@ -74,24 +76,25 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         //
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAddClub" {
-            if let destinationVC = segue.destinationViewController as? addClub{
+            if let destinationVC = segue.destination as? addClub{
                 let row = self.tableView.indexPathForSelectedRow?.row
-                var imageOfUnderlyingView = self.view.convertViewToImage()
+                let imageOfUnderlyingView = self.view.convertViewToImage()
                 let backView = UIImageView(frame: self.view.frame)
                 backView.image = imageOfUnderlyingView
-                backView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
-                var lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-                var blurView = UIVisualEffectView(effect: lightBlur)
+                backView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+                let lightBlur = UIBlurEffect(style: UIBlurEffectStyle.light)
+                let blurView = UIVisualEffectView(effect: lightBlur)
                 blurView.frame =  backView.bounds
                 backView.addSubview(blurView)
                 destinationVC.view.addSubview(backView)
-                destinationVC.view.sendSubviewToBack(backView)
+                destinationVC.view.sendSubview(toBack: backView)
                 destinationVC.text1 = filteredList[row!].clubName
                 destinationVC.text2 = filteredList[row!].description
             }

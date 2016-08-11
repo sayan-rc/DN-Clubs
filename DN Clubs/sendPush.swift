@@ -15,8 +15,8 @@ class sendPush: UIViewController {
     var text1 = "ERROR"
     
     @IBAction func sendMessage(sender: AnyObject) {
-        let short = text1.substringToIndex(text1.endIndex.predecessor().predecessor().predecessor().predecessor().predecessor().predecessor().predecessor().predecessor())
-        let final = short.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let short = text1.substring(to: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.endIndex)))))))))
+        let final = short.replacingOccurrences(of: " ", with: "")
         let push = PFPush()
         let data = [
             "alert" : short+": "+message.text,
@@ -26,30 +26,30 @@ class sendPush: UIViewController {
             ]
         push.setData(data as [NSObject : AnyObject])
         push.setChannel(final)
-        push.sendPushInBackground()
+        push.sendInBackground()
         
-        let container = CKContainer.defaultContainer()
+        let container = CKContainer.default()
         let publicData = container.publicCloudDatabase
         
         let record = CKRecord(recordType: "Notification")
         record.setValue(final, forKey: "Club")
         record.setValue(short+": "+message.text, forKey: "Message")
-        publicData.saveRecord(record, completionHandler: { record, error in
+        publicData.save(record, completionHandler: { record, error in
             if error != nil {
                 print(error)
             }
         })
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet var topBar: UINavigationBar!
     @IBAction func goBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet var message: UITextView!
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         topBar.topItem?.title = text1
         message.layer.borderWidth = 0

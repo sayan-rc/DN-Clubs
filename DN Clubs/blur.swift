@@ -11,10 +11,10 @@ import Foundation
 extension UIView {
     func convertViewToImage() -> UIImage{
         UIGraphicsBeginImageContext(self.bounds.size);
-        self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
         
-        return image;
+        return image!;
     }
 }
