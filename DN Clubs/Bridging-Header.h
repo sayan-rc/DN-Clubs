@@ -9,8 +9,13 @@
 #ifndef DN_Clubs_Bridging_Header_h
 #define DN_Clubs_Bridging_Header_h
 
+//OLD sign in, deprecated
 #import <GooglePlus/GooglePlus.h>
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <Bolts/Bolts.h>
+
+
+//NEW signin 
+#import <Google/SignIn.h>
 
 #endif

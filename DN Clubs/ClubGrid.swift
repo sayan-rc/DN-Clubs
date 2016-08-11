@@ -63,7 +63,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDataSource,
     //Once the account is authorized, this function gives Administrative privileges to Club Presidents according to the
     //JSON file on DropBox that holds all the club data
     func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-        let email: String = auth.userEmail
+        let email: String = AppDelegate.presEmail
         let endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/pClubs.json")
         let data = NSData(contentsOfURL: endpoint!)
         do{

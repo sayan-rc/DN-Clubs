@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3BF5361D5C31D900E07327 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B3BF5351D5C31D900E07327 /* GoogleService-Info.plist */; };
+		0B3BF5371D5C31EA00E07327 /* GoogleService-Info.plist in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3BF5351D5C31D900E07327 /* GoogleService-Info.plist */; };
+		0B3BF5481D5C3A4500E07327 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B3BF5461D5C3A4500E07327 /* GoogleSignIn.bundle */; };
+		0B3BF5491D5C3A4500E07327 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3BF5471D5C3A4500E07327 /* GoogleSignIn.framework */; };
+		0B3BF54B1D5C3A7A00E07327 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3BF54A1D5C3A7A00E07327 /* AddressBook.framework */; };
+		0B3BF54D1D5C3A8300E07327 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3BF54C1D5C3A8300E07327 /* SafariServices.framework */; };
 		5EF5A4CE1AE9B314009938F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */; };
 		5EF5A4D51AE9B315009938F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D31AE9B315009938F7 /* Main.storyboard */; };
 		5EF5A4D71AE9B315009938F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF5A4D61AE9B315009938F7 /* Images.xcassets */; };
@@ -49,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B3BF5351D5C31D900E07327 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0B3BF5461D5C3A4500E07327 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		0B3BF5471D5C3A4500E07327 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		0B3BF54A1D5C3A7A00E07327 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0B3BF54C1D5C3A8300E07327 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		5EF5A4C81AE9B314009938F7 /* DN Clubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DN Clubs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF5A4CC1AE9B314009938F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EF5A4CD1AE9B314009938F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,10 +102,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0AEC1B1B7D1FB4007AC947 /* SystemConfiguration.framework in Frameworks */,
+				0B3BF54D1D5C3A8300E07327 /* SafariServices.framework in Frameworks */,
+				0B3BF54B1D5C3A7A00E07327 /* AddressBook.framework in Frameworks */,
+				0B3BF5371D5C31EA00E07327 /* GoogleService-Info.plist in Frameworks */,
 				FB5646571B9D48C5008B3DF6 /* CloudKit.framework in Frameworks */,
+				0B3BF5491D5C3A4500E07327 /* GoogleSignIn.framework in Frameworks */,
 				FB0AEC1F1B7D1FD5007AC947 /* Social.framework in Frameworks */,
 				FB0AEC1D1B7D1FD0007AC947 /* Accounts.framework in Frameworks */,
-				FB0AEC1B1B7D1FB4007AC947 /* SystemConfiguration.framework in Frameworks */,
 				FB0AEC191B7D1FA8007AC947 /* StoreKit.framework in Frameworks */,
 				FB0AEC171B7D1F9B007AC947 /* Security.framework in Frameworks */,
 				FB0AEC151B7D1F95007AC947 /* QuartzCore.framework in Frameworks */,
@@ -122,6 +137,11 @@
 		5EF5A4BF1AE9B314009938F7 = {
 			isa = PBXGroup;
 			children = (
+				0B3BF54C1D5C3A8300E07327 /* SafariServices.framework */,
+				0B3BF54A1D5C3A7A00E07327 /* AddressBook.framework */,
+				0B3BF5461D5C3A4500E07327 /* GoogleSignIn.bundle */,
+				0B3BF5471D5C3A4500E07327 /* GoogleSignIn.framework */,
+				0B3BF5351D5C31D900E07327 /* GoogleService-Info.plist */,
 				FB5646561B9D48C5008B3DF6 /* CloudKit.framework */,
 				FB0AEC1E1B7D1FD5007AC947 /* Social.framework */,
 				FB0AEC1C1B7D1FD0007AC947 /* Accounts.framework */,
@@ -249,6 +269,7 @@
 				TargetAttributes = {
 					5EF5A4C71AE9B314009938F7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = L72278KK8K;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -293,6 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF5A4D51AE9B315009938F7 /* Main.storyboard in Resources */,
+				0B3BF5481D5C3A4500E07327 /* GoogleSignIn.bundle in Resources */,
+				0B3BF5361D5C31D900E07327 /* GoogleService-Info.plist in Resources */,
 				5EF5A4DA1AE9B315009938F7 /* LaunchScreen.xib in Resources */,
 				5EF5A4D71AE9B315009938F7 /* Images.xcassets in Resources */,
 			);
@@ -457,6 +480,7 @@
 					"$(SRCROOT)/**",
 					"$(PROJECT_DIR)/DN",
 					Clubs,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -486,6 +510,7 @@
 					"$(SRCROOT)/**",
 					"$(PROJECT_DIR)/DN",
 					Clubs,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "DN Clubs/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
