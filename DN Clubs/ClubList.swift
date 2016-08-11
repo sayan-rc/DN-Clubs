@@ -75,12 +75,6 @@ class ClubList: UIViewController, UITableViewDataSource, UISearchResultsUpdating
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        //
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAddClub" {
             if let destinationVC = segue.destination as? addClub{

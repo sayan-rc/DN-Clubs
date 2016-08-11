@@ -20,16 +20,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PRN-7a-2WO">
-                                <frame key="frameInset" minY="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRN-7a-2WO">
                                 <items>
                                     <navigationItem title="Notifications" id="K8A-Z1-x7e"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-Y0-Tlz">
-                                <frame key="frameInset" minY="64" width="600" height="487"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugH-Y0-Tlz">
+                                <frame key="frameInset" minY="64" width="375" height="487"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="xLY-Bz-8cE"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFp-MP-um8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="-202"/>
+            <point key="canvasLocation" x="716" y="-228.93553223388307"/>
         </scene>
         <!--Send Push-->
         <scene sceneID="b26-a1-khz">
@@ -67,12 +68,12 @@
                                     <navigationItem title="ERROR" id="V4w-3C-myO">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Un8-eP-0Zf">
                                             <connections>
-                                                <action selector="goBack:" destination="SxV-JY-dhR" id="sia-gl-jUC"/>
+                                                <action selector="hideSendPush:" destination="SxV-JY-dhR" id="yZ4-23-eS3"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="gZX-Jt-HcA">
                                             <connections>
-                                                <action selector="sendMessage:" destination="SxV-JY-dhR" id="w41-9C-dU4"/>
+                                                <action selector="sendNotification:" destination="SxV-JY-dhR" id="Uni-Qp-ysa"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -133,7 +134,7 @@
                                         <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hig-lc-zqR" id="QU2-oB-FoB">
-                                            <frame key="frameInset" width="567" height="44"/>
+                                            <frame key="frameInset" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -254,12 +255,12 @@
                                     <navigationItem title="ERROR" id="kTG-Yh-edU">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="vg1-RN-eSG">
                                             <connections>
-                                                <action selector="closeOut:" destination="Tlh-hO-YQi" id="Z8B-ye-yZ6"/>
+                                                <action selector="hideClubMessages:" destination="Tlh-hO-YQi" id="2Xq-d5-T1a"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Unsubscribe" id="iV5-6z-jyc">
                                             <connections>
-                                                <action selector="deleteData:" destination="Tlh-hO-YQi" id="fcr-jG-CB5"/>
+                                                <action selector="removeClubForUser:" destination="Tlh-hO-YQi" id="pD4-d9-HDd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

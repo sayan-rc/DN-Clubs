@@ -9,8 +9,10 @@
 
 import UIKit
 import CoreData
-import Parse
 import CloudKit
+import FirebaseInstanceID
+import FirebaseMessaging
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,42 +20,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 ////
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        Parse.setApplicationId("IsDLWJvRQovKaWPmJD7srlyfFjo95A2g87rvUk3B",
-            clientKey: "eX7PP7amUXkUvzKl96VImzigjOpswTXMegQnM6E9")
-        // Register for Push Notitications
-        if application.applicationState != UIApplicationState.background {
-            // Track an app open here if we launch with a push, unless
-            // "content_available" was used to trigger a background push (introduced in iOS 7).
-            // In that case, we skip tracking here to avoid double counting the app-open.
-        
-        }
-        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(settings)
-        UIApplication.shared.registerForRemoteNotifications()
-        
+        FIRApp.configure()
         return true
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.current()
-        installation.setDeviceTokenFrom(deviceToken as Data)
-        installation.saveInBackground()
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Registration failed!")
     }
     
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        if error.code == 3010 {
-            print("Push notifications are not supported in the iOS Simulator.")
-        } else {
-            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != UIUserNotificationType() {
+            application.registerForRemoteNotifications()
         }
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handle(userInfo)
-        if application.applicationState == UIApplicationState.inactive {
-            PFAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
+    }
+    
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        UIApplication.shared.applicationIconBadgeNumber+=1
+        FIRMessaging.messaging().appDidReceiveMessage(userInfo)
+        if application.applicationState == UIApplicationState.active{
+            if let aps = userInfo["aps"] as? NSDictionary {
+                if let alert = aps["alert"] as? NSDictionary {
+                    if let body = alert["body"] as? NSString, let title = alert["title"] as? NSString{
+                        let alert = UIAlertView(title: title as String, message: body as String, delegate: self, cancelButtonTitle: "Ok")
+                        alert.cancelButtonIndex = 0
+                        alert.show()
+                    }
+                } else if let alert = aps["alert"] as? NSString {
+                    //Do stuff
+                }
+            }
         }
     }
     
@@ -63,25 +66,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        FIRMessaging.messaging().disconnect()
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FIRMessaging.messaging().connect { (error) in
+            if (error != nil) {
+                print("Unable to connect with FCM. \(error)")
+            } else {
+                print("Connected to FCM.")
+            }
+        }
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         self.saveContext()
     }
@@ -89,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //GPP
     
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return GPPURLHandler.handle(url as URL!, sourceApplication: sourceApplication, annotation: annotation)
     }
     

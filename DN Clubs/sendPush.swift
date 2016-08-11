@@ -7,30 +7,47 @@
 //
 
 import UIKit
-import Parse
 import CloudKit
 
 class sendPush: UIViewController {
 
     var text1 = "ERROR"
     
-    @IBAction func sendMessage(sender: AnyObject) {
+    
+    @IBOutlet var topBar: UINavigationBar!
+    @IBOutlet var message: UITextView!
+    
+    @IBAction func hideSendPush(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func sendNotification(_ sender: AnyObject) {
         let short = text1.substring(to: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.index(before: text1.endIndex)))))))))
         let final = short.replacingOccurrences(of: " ", with: "")
-        let push = PFPush()
-        let data = [
-            "alert" : short+": "+message.text,
-            "badge" : "Increment",
-            "content-available" : 1,
-            "sound" : "default",
-            ]
-        push.setData(data as [NSObject : AnyObject])
-        push.setChannel(final)
-        push.sendInBackground()
+        let body = ["priority":"high", "to":"/topics/\(final)", "notification": ["title": short, "body": message.text], "content_available" : true]
+        do{
+            let json = try (JSONSerialization.data(withJSONObject: body, options: JSONSerialization.WritingOptions.prettyPrinted))
+            let req = NSMutableURLRequest(url: URL(string:"https://fcm.googleapis.com/fcm/send")!)
+            req.httpMethod = "POST"
+            req.httpBody = json
+            req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            req.addValue("key=AIzaSyA8t5q75XVNcQ2e600PD94j5s0ibJvOLmk", forHTTPHeaderField: "Authorization")
+            URLSession.shared.dataTask(with: req as URLRequest) { data, response, error in
+                if error != nil {
+                    //Your HTTP request failed.
+                    print(error?.localizedDescription)
+                } else {
+                    //Your HTTP request succeeded
+                    print(String(data: data!, encoding: String.Encoding.utf8))
+                }
+                }.resume()
+        } catch {
+            
+        }
         
         let container = CKContainer.default()
         let publicData = container.publicCloudDatabase
-        
         let record = CKRecord(recordType: "Notification")
         record.setValue(final, forKey: "Club")
         record.setValue(short+": "+message.text, forKey: "Message")
@@ -39,16 +56,9 @@ class sendPush: UIViewController {
                 print(error)
             }
         })
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBOutlet var topBar: UINavigationBar!
-    @IBAction func goBack(sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBOutlet var message: UITextView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         topBar.topItem?.title = text1
@@ -56,7 +66,6 @@ class sendPush: UIViewController {
         message.layer.cornerRadius = 5.0
     }
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
 

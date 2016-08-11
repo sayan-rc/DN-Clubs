@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import Parse
-import AddressBook
-import MediaPlayer
 import CoreMotion
 import CoreLocation
 import AssetsLibrary
 import CoreData
+import FirebaseInstanceID
+import FirebaseMessaging
+import Firebase
 
 
-class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     var signIn: GPPSignIn?
     var list = [String]()
     
@@ -42,25 +42,8 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, U
         collectionView.reloadData()
     }
     
-    
-
-    @IBAction func googleLogin(_ sender: AnyObject) {
-        signIn = GPPSignIn.sharedInstance()
-        signIn?.shouldFetchGooglePlusUser = true
-        signIn?.clientID = "679790092535-jkfc6c4tkm93a1vbgnqc0p2ppdbe61fo.apps.googleusercontent.com"
-        signIn?.scopes = [kGTLAuthScopePlusUserinfoEmail]
-        signIn?.shouldFetchGoogleUserEmail = true
-        signIn?.delegate = self
-        signIn?.authenticate()
-
-    }
- 
-
-    
-    
-    
-    func finished(withAuth: GTMOAuth2Authentication!, error: Error!) {
-        let email: String = withAuth.userEmail
+    func finished(withAuth auth: GTMOAuth2Authentication!, error: Error!) {
+        let email: String = auth.userEmail
         let endpoint = NSURL(string: "https://dl.dropboxusercontent.com/u/17375564/pClubs.json")
         let data = NSData(contentsOf: endpoint! as URL)
         do{
@@ -77,10 +60,23 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, U
             print("broken link")
         }
         collectionView.reloadData()
-
-
     }
+    
+    
+    
 
+    @IBAction func googleLogin(_ sender: AnyObject) {
+        signIn = GPPSignIn.sharedInstance()
+        signIn?.shouldFetchGooglePlusUser = true
+        signIn?.clientID = "679790092535-jkfc6c4tkm93a1vbgnqc0p2ppdbe61fo.apps.googleusercontent.com"
+        signIn?.scopes = [kGTLAuthScopePlusUserinfoEmail]
+        signIn?.shouldFetchGoogleUserEmail = true
+        signIn?.delegate = self
+        signIn?.authenticate()
+    }
+ 
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,8 +84,7 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, U
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Club")
         do {
-            var fetchedResults = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
-            var results = fetchedResults
+            let results = try managedContext.fetch(fetchRequest) as? [NSManagedObject]
             for club: NSManagedObject in results!{
                 list.append(club.value(forKey: "name") as! String)
             }
@@ -128,20 +123,19 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, U
         return cell
     }
     
-    
-    func collectionView(collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width/2, height: collectionView.bounds.size.width/2)
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(list[indexPath.row].hasSuffix("(Admin)")){
             self.performSegue(withIdentifier: "showSendPush", sender: self)
         }
         else{
             self.performSegue(withIdentifier: "showClubMessages", sender: self)
         }
+
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width/2, height: collectionView.bounds.size.width/2)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -159,7 +153,6 @@ class ClubGrid: UIViewController, GPPSignInDelegate, UICollectionViewDelegate, U
                 backView.addSubview(blurView)
                 destinationVC.view.addSubview(backView)
                 destinationVC.view.sendSubview(toBack: backView)
-
             }
         }
         else{

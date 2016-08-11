@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
-import Parse
 import CloudKit
+import FirebaseInstanceID
+import FirebaseMessaging
+import Firebase
 
 class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,14 +21,13 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet var barText: UINavigationItem!
     @IBOutlet var bar: UITabBarItem!
     
-    @IBAction func closeOut(sender: AnyObject) {
+    
+    @IBAction func hideClubMessages(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
-
     
-    @IBAction func deleteData(sender: AnyObject) {
+    @IBAction func removeClubForUser(_ sender: AnyObject) {
         let toDelete = text1
-        // Delete it from the managedObjectContext
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"Club")
@@ -42,11 +43,10 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
         } catch {
             print("whoops")
         }
-        let currentInstallation = PFInstallation.current()
-        currentInstallation.remove(toDelete.replacingOccurrences(of: " ", with: ""), forKey: "channels")
-        currentInstallation.saveInBackground()
+        FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/\(text1.replacingOccurrences(of: " ", with: ""))")
         self.dismiss(animated: true, completion: nil)
     }
+
     
     func contains(a:[(String, String)], v:(String,String)) -> Bool {
         let (c1, c2) = v
@@ -56,61 +56,38 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let currentInstallation = PFInstallation.current()
-        if  currentInstallation.badge != 0 {
-            currentInstallation.badge = 0
-            currentInstallation.saveEventually()
-        }
-        
         let container = CKContainer.default()
         let publicData = container.publicCloudDatabase
         let query = CKQuery(recordType: "Notification", predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         publicData.perform(query, inZoneWith: nil) { results, error in
             if error == nil { // There is no error
-                let channels = PFInstallation.current().channels
-                if(channels != nil){
-                    print(channels)
-                    for notif in results! {
-                        let name = notif["Club"] as! String
-                        for channel in channels!{
-                            if (channel == name){
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateStyle = DateFormatter.Style.medium
-                                let date = dateFormatter.string(from: notif.creationDate!)
-                                let text = (notif["Message"] as! String).components(separatedBy: ": ")
-                                let temp = (date, text[1])
-                                if(!self.contains(a: self.messages, v: temp) && self.messages.count<20 && text[0] == self.text1){
-                                    self.messages.append(temp)
-                                    self.tableView.reloadData()
-                                    
-                                }
-                                break
-                            }
+                for notif in results! {
+                    let name = notif["Club"] as! String
+                    if (self.text1.replacingOccurrences(of: " ", with: "") == name){
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateStyle = DateFormatter.Style.medium
+                        let date = dateFormatter.string(from: notif.creationDate!)
+                        let text = (notif["Message"] as! String).components(separatedBy: ": ")
+                        let temp = (text[0]+": "+date, text[1])
+                        if(!self.contains(a: self.messages, v: temp) && self.messages.count<20){
+                            self.messages.append(temp)
+                            self.tableView.reloadData()
                         }
                     }
                 }
+                
             }
             else {
                 print(error)
             }
         }
-
-        
         tableView.reloadData()
-
     }
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        //messages+=[("Hello", "World")]
         barText.title = text1
-        let currentInstallation = PFInstallation.current()
-        if currentInstallation.badge != 0 {
-            currentInstallation.badge = 0
-            currentInstallation.saveEventually()
-        }
         tableView = UITableView()
         tableView.frame = CGRect(origin: CGPoint(x: 0,y :64), size: CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height-114))
         tableView.delegate = self
@@ -125,23 +102,17 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         publicData.perform(query, inZoneWith: nil) { results, error in
             if error == nil { // There is no error
-                let channels = PFInstallation.current().channels
-                if(channels != nil){
-                    for notif in results! {
-                        let name = notif["Club"] as! String
-                        for channel in channels!{
-                            if (channel == name){
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateStyle = DateFormatter.Style.medium
-                                let date = dateFormatter.string(from: notif.creationDate!)
-                                let text = (notif["Message"] as! String).components(separatedBy: ": ")
-                                let temp = (date, text[1])
-                                if(!self.contains(a: self.messages, v: temp) && self.messages.count<20 && text[0] == self.text1){
-                                    self.messages.append(temp)
-                                    self.tableView.reloadData()
-                                }
-                                break
-                            }
+                for notif in results! {
+                    let name = notif["Club"] as! String
+                    if (self.text1.replacingOccurrences(of: " ", with: "") == name){
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateStyle = DateFormatter.Style.medium
+                        let date = dateFormatter.string(from: notif.creationDate!)
+                        let text = (notif["Message"] as! String).components(separatedBy: ": ")
+                        let temp = (text[0]+": "+date, text[1])
+                        if(!self.contains(a: self.messages, v: temp) && self.messages.count<20){
+                            self.messages.append(temp)
+                            self.tableView.reloadData()
                         }
                     }
                 }
@@ -156,7 +127,7 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
                 // Do any additional setup after loading the view.
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 80.0;//Choose your custom row height
     }
@@ -171,9 +142,8 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cellIdentifier = "cell"
-        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? UITableViewCell!
+        var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as UITableViewCell!
         cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
         cell!.textLabel?.text = messages[indexPath.row].0
         cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
@@ -181,11 +151,13 @@ class clubMessages: UIViewController, UITableViewDelegate, UITableViewDataSource
         cell!.detailTextLabel?.font = UIFont.systemFont(ofSize: 15.0)
         return cell!
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let alert = UIAlertView(title: messages[indexPath.row].0, message: messages[indexPath.row].1, delegate: self, cancelButtonTitle: "Ok")
-        alert.cancelButtonIndex = 0
-        alert.show()
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newAlert = UIAlertController(title: messages[indexPath.row].0, message: messages[indexPath.row].1, preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action:UIAlertAction!) in
+        }
+        newAlert.addAction(cancelAction)
+        self.present(newAlert, animated: true, completion: nil)
     }
     
 //

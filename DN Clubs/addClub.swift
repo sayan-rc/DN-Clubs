@@ -8,7 +8,9 @@
 
 import UIKit
 import CoreData
-import Parse
+import FirebaseInstanceID
+import FirebaseMessaging
+import Firebase
 
 class addClub: UIViewController {
     @IBOutlet var topBar: UINavigationBar!
@@ -16,6 +18,7 @@ class addClub: UIViewController {
     @IBOutlet var barTitle: UINavigationItem!
     var text1 = "Club Name"
     var text2 = "Hello"
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         barTitle.title = text1
@@ -24,7 +27,6 @@ class addClub: UIViewController {
         self.topBar.shadowImage = UIImage()
         self.topBar.isTranslucent = true
         self.topBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
-
     }
 
     @IBAction func addClubForUser(_ sender: AnyObject) {
@@ -52,14 +54,8 @@ class addClub: UIViewController {
             } catch {
                 print(error)
             }
-            let currentInstallation = PFInstallation.current()
-            currentInstallation.addUniqueObject(text1.replacingOccurrences(of: " ", with: ""), forKey: "channels")
-            currentInstallation.saveInBackground()
-            let subscribedChannels = PFInstallation.current().channels
+            FIRMessaging.messaging().subscribe(toTopic: "/topics/\(text1.replacingOccurrences(of: " ", with: ""))")
         }
-        
-        
-        
         self.dismiss(animated: true, completion: nil)
     }
 

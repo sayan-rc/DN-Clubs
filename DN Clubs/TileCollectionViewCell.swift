@@ -23,21 +23,14 @@ class TileCollectionViewCell: UICollectionViewCell {
         back.layer.shadowOpacity = 0.5
         back.layer.shadowOffset = CGSize.zero
         back.layer.shadowRadius = 1
-        
         let rectShape = CAShapeLayer()
         rectShape.bounds = color.frame
         rectShape.position = color.center
         rectShape.path = UIBezierPath(roundedRect: color.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         color.layer.mask = rectShape
-        
         circle.layoutIfNeeded()
         circle.layer.masksToBounds = false
         circle.layer.cornerRadius = circle.layer.frame.width / 2.0
         circle.clipsToBounds = true
-
     }
-    
-
-    
-    
 }
