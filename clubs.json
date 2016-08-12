@@ -1,0 +1,155 @@
+{
+    "clubs":[{
+            "clubName":"CS Club",
+            "description":"We focus on programming in a variety of languages (Java, Swift, ...), mobile app development, and algorithmic theory. We're open to both beginners and experts. We meet Thursdays after tutorial in Mr. Lantsberger's Room (A101). You can check us out online at http://www.nighthackers.org or drop a line to gkswamy98@gmail.com."
+        },
+        {
+            "clubName":"Quizbowl",
+            "description":"We compete in team-jeapordy like tournaments on the weekend hosted by a variety of schools. Think Trivia Crack but school-sanctioned. We meet Tuesdays in Mr. Swanson's Room (L116) right after school. You can get a taste of what Quizbowl is like at http://protobowl.com/dnhs. If you have any questions, email dnquizbowl@gmail.com."
+        },
+        {
+            "clubName":"Science Alliance",
+            "description":"We organize the subject olympiads (Biology, CS, ...) and tutor students for the AP Sciences. If you're interested in either, please check out http://delnortesa.blogspot.com/. Questions should be addressed to dnsciencealliance@gmail.com."
+        },
+        {
+            "clubName":"Science Olympiad",
+            "description":"We compete in a yearly team science competition that covers all disciplines. Meeting times depend on the events you've signed up for. You can learn more about us at http://www.dnscioly.com or by emailing dnscioly@gmail.com."
+        },
+        {
+            "clubName":"Del Norte Peer Tutoring",
+            "description":"Originally established by Soham Mhatre, Armaun Rouhi, and Gleb Shevchuk in the beginning of the 2013-2014 school year as a subset of Peer Leaders Uniting Students (PLUS), Del Norte Peer Tutoring supplies multitudes of classrooms with experienced tutors during Monday,Wednesday, and Thursday Tutorial periods. By bringing our tutors to students during these Tutorial periods, we strive to accomplish our goal of refining Del Norte’s academic prowess and enriching the academic foundations of every Nighthawk. If you're interested in learning more about our program and joining us as a tutor, please visit delnortetutoring.com to sign up!"
+        },
+        {
+            "clubName":"Women Leadership Club",
+            "description":"In the Women's Leadership Club we are all united with one purpose and that is to empower the women of tomorrow. We want the women of tomorrow to understand the importance of discovering themselves and unlocking their full potential."
+        },
+        {
+            "clubName":"WiSE",
+            "description":"Women in Science and Engineering Club's mission is to inspire girls to pursue careers in STEM. We host guest speakers from all over the industry, facilitate outreach events at our school as well as at local middle schools, and create opportunities for Nighthawks to get involved in science. Our meeting days are Thursdays at Lunch in Mrs. Ludwig's room - L101 (twice a month). Please visit our student-created website www.delnortewise.com for more information and contact us at delnortewise@gmail.com."
+        },
+        {
+            "clubName":"Math Club",
+            "description":"Math Club hosts the AMC, AIME, CHMMC. There's no enterance requirement though we do reccomend having taken an AP-level math class before joining. We meet before school on Tuesdays in Mrs. Lanzi-Sheaman's room G104. Drop on by to find out more."
+        },
+        {
+            "clubName":"Radix Education",
+            "description":"We're a nonprofit organization that publishes a student-run scientific journal called The Beaker to inspire others to pursue stem careers as well as performing outreach to local schools. If you're interested in writing, designing, or editing for us, email beaker@radix-education.org."
+        },
+        {
+            "clubName":"Key Club",
+            "description":"We are a volunteer service club under the KIWANIS organization. We're a club of serving student-leaders that are provided with volunteer, leadership, and social opportunites. Come join us for a fun, spirited year! Meetings are Tuesday @ Lunch in Mrs. Giffins Room L115."
+        },
+        {
+            "clubName":"Clash Club",
+            "description":"We discuss different aspects of the game Clash of Clans. It is a way for everyone to help each other out and spread ideas. We meet in Mr. Liao's classroom K105. Meeting times are still tentative. We were thinking every other Friday during lunch."
+        },
+        {
+            "clubName":"ABC Club",
+            "description":"Fundraising to provide DNHS with extra supplies for students and teachers.  We meet every Monday during lunch in room E106. Just email academic.bridge.creators@gmail.com if you have any questions!"
+        },
+        {
+            "clubName":"Flox News",
+            "description":"This club produces content on it's website www.floxnews.com where it hosts the school's satirical online newspaper. They live to make people laugh while improving life at Del Norte. Email them at floxnews@gmail.com if you are interested in writing for them!"
+        },
+        {
+            "clubName":"Del Norte Catalyst 4 Success",
+            "description":"We promote STEM among younger students by going to middle and elementary schools and giving kids the opportunity to participate in science experiments that we set up. Meet on Mondays in K103 (Mr. Ozuna's room)."
+        },
+        {
+            "clubName":"National Honor Society",
+            "description":"The National Honor Society (NHS) is the nation's premier organization established to recognize outstanding high school students. More than just an honor roll, NHS serves to honor those students who have demonstrated excellence in the areas of scholarship, leadership, service, and character. Contact: dnhshonorsociety@gmail.com. If you have any questions, please Facebook message any of the officers. 2015-2016 Year: President: Tasnim Tallman, Vice-President: Adam Chohan, Secretary: Nikki Hardiman, Treasurer: Savannah Kennedy."
+        },
+        {
+            "clubName":"Nighthawk Nation",
+            "description":"Del Norte's spirit club! Join for all the updates on what's flockin' on campus!"
+        },
+        {
+            "clubName":"Student Advocates for Gender Equality",
+            "description":"We're a club for any and all things pertaining to the equality of the genders, intersectionally. We welcome anyone and everyone to meet with us and have conversations and some fun! Meetings held on Fridays @ lunch in Ms. Volger's room L114! "
+        },
+        {
+            "clubName":"Speech and Debate",
+            "description":"Speech and Debate is a club of motivated students who work towards becoming more well-rounded by competing at tournaments on the national and local circuits. We meet in Ms. Derksen's room, G103, on Tuesday mornings (7:30 am) and Wednesday afternoons (3:00 pm - 4:30 pm). You can contact us with any questions at: debatedelnorte@gmail.com."
+        },
+        {
+            "clubName":"Resounding Joy",
+            "description":"We are a club dedicated to serving the community through music therapy. Meetings are every other Monday, during lunch in Ms. Dupas' room, J117. For now, we go to Wesley Palms Retirement Home once a month and participate/facilitate in music therapy sessions with the residents, no musical experience needed (:"
+        },
+        {
+            "clubName":"Del Norte Future Doctors of America",
+            "description":"The Future Doctors of America Club provides students with comprehensive exposure to the medical field, whether it’s through guest speakers, field trips to hospitals, or group case studies. We also run the only high school medical publication in the Poway Unified School District, The Future Doctor Medical Journal, with the goal of rousing interest in medicine and creating a new generation of future doctors in the youth of San Diego County. Whether you’re curious or serious about the medical field, drop by our weekly meetings on Thursdays in K101 to take a peak at medicine, because who knows, you might just find your passion. - "
+        },
+        {
+            "clubName":"Del Norte Investing",
+            "description":"The Del Norte Investing Club is here to teach and inspire those that are interested in investing, business, and finance. We get our members involved through constant exploration of these three industries, and anyone is free to join."
+        },
+        {
+            "clubName":"DNHS Paintball Squad",
+            "description":"We play paintball and set tips for events but mostly goof around."
+        },
+        {
+            "clubName":"Del Norte Rugby Club",
+            "description":"Don't be fooled by the name! The Del Norte Rugby Club is actually a year round sport, with a season starting in November and ending in March. Members can expect a full contact sport, with a Junior Varsity and a Varsity team, both with their respective championships and letters.  When season rolls around, Del Norte typically gets to face 10 different schools from a variety of counties. Questions or comments? Contact Ali Mohammad at saadmohammad122@gmail.com. (Please remember, rugby is indeed a full tackle sport, akin to football or wrestling. Don't be surprised if you get a few bruises!)"
+        },
+        {
+            "clubName":"DNHS Rise Up",
+            "description":"As an organization under the United Nations Foundation, Rise Up aims to fundraise and raise awareness for girls in third world countries. Meetings are going to be held either Monday or Thursday every other week. Contact us at dnhsgirlup@gmail.com"
+        },
+        {
+            "clubName":"Youth San Diego",
+            "description":"We meet every Thursday at lunch in room L113. Every week you can hangout and meet new people, eat some good food, get to know God, and share the love of God throughout our campus. Everyone is welcome!"
+        },
+        {
+            "clubName":"Going Green",
+            "description":"We're trying to start a garden on campus to grow food and sell in cafeteria!"
+        },
+        {
+            "clubName":"Del Norte Refugee Tutoring",
+            "description":"Del Norte Refugee Tutoring is dedicated to promoting the spread of education amongst refugees from all over the world. We go to Ibarra Elementary School in Downtown San Diego every Tuesday to tutor refugees who range from kindergarteners to 8th graders in math and reading. Carpools are provided!"
+        },
+        {
+            "clubName":"Robotics",
+            "description":"We are Del Nort'e Varsity Sport for the Mind that combines the excitement of sports with the rigors of science and technology.  It’s as close to 'real-world engineering' as a student can get. Our main goal is to compete in the FIRST Robotics Competition which requires us to design and build a robot in 6 weeks. In order to achieve our goal we maintain relationships with businesses to raise funds and work closely with volunteer professional mentors. Meetings are Monday during lunch and Tuesdays after school from 3:32-5:30pm in Mr. Campillo's Room A107. Please contact Samantha Tran at dnhsteam3749@gmail.com for more information."
+        },
+        {
+            "clubName":"EcoFuture",
+            "description":"We are Del Norte's Environmental Club. Our main goal is to raise awareness to and promote eco-friendliness. We meet Wednesdays during lunch in Mrs. Stallings room E105. Please contact Samantha Tran & Tricia Pham at ecofuture.info@gmail.com"
+        },
+        {
+            "clubName":"The Talon",
+            "description":"The Talon is Del Norte's very own student newspaper, now in its fifth year of publication. Interested in writing, photography, art, or design? Send us an email at thedntalon@gmail.com or tweet us at @delnortetalon for more information."
+        },
+        {
+            "clubName":"Guitar Club",
+            "description":"We learn fingerstyle guitar and socialize with music. Club Advisor: Lisa Smedley, Meeting Time: Wednesday, Thursday at tutorial, Room E102, President: Jeongho Kim, Phone Number:(858)386-9958, Email: ester9415@gmail.com."
+        },
+        {
+            "clubName":"Del Norte Fishing",
+            "description":"This club is all about getting out on the water whether it be fresh water or the ocean. We are all about having a good time fishing and teaching others how too also. "
+        },
+        {
+            "clubName":"Love146",
+            "description":"The Love146 club is a task force working to help stop child trafficking and exploitation by fundraising, teaching prevention, and spreading awareness."
+        },
+        {
+            "clubName":"ACE Mentoring",
+            "description":"ACE Mentoring explores careers in architecture and engineering; such as mechanical, electrical, structural, and others. We meet every other Tuesday at lunch in A107."
+        },
+        {
+            "clubName":"Equality Club",
+            "description":"Equality Club discusses and promotes equality for all gender identities and sexualities every Wednesday during lunch in E106."
+        },
+        {
+            "clubName":"Society and Life Training",
+            "description":"To inform the student body about various careers and teach them some basic life skills that would be helpful to them."
+        },
+        {
+            "clubName":"BBC",
+            "description":"BBC spreads multicultural awareness through TV and other media sources, as well as providing an environment to relax throughout the year. We primarily watch Doctor Who, Sherlock, and Merlin in K103, Mr. Ozuna’s room, on Mondays and Wednesdays at lunch. You can contact the club president at eva.n.beliaeff@gmail.com or 858-218-4077."
+        },
+        {
+            "clubName":"Anime Equality Club",
+            "description":"The Anime Equality Club is a club that supports Japanese and Chinese media at its finest. People sometimes find those media types taboo and I want this club to be able to show that it is indeed a club that supports said media and people who want to enjoy that media."
+        }
+    ]
+}
